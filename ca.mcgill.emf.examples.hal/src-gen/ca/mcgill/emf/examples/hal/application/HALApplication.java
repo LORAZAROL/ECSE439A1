@@ -21,13 +21,13 @@ import ca.mcgill.emf.examples.hal.view.*;
 public class HALApplication {
 
 	private static HomeAutomationSystem homeAutomationSystem;
-	private static String filename = "data/data.tournament";
+	private static String filename = "data/data.homeautomationsystem";
 
 	public static void main(String[] args) {
 
 		// Initialize HAL package and prepare resource helper
 		HalPackage.eINSTANCE.eClass();
-		ResourceHelper.INSTANCE.addResourceFactory("tournament", new HalFactoryImpl());
+		ResourceHelper.INSTANCE.addResourceFactory("tournament", new HalResourceFactoryImpl());
 
 		// start UI
 		java.awt.EventQueue.invokeLater(new Runnable() {
