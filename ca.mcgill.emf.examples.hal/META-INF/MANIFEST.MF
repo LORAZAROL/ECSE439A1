@@ -14,4 +14,5 @@ Export-Package: ca.mcgill.emf.examples.hal,
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
-Import-Package: ca.mcgill.emf.examples.hal
+Import-Package: ca.mcgill.emf.examples.hal,
+ org.eclipse.emf.ecore.xmi.impl

@@ -271,6 +271,15 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDeviceType_Devices() {
+		return (EReference) deviceTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDevice() {
 		return deviceEClass;
 	}
@@ -291,6 +300,15 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 */
 	public EReference getDevice_Room() {
 		return (EReference) deviceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDevice_Devicetypes() {
+		return (EReference) deviceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -747,10 +765,12 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		// Create classes and their features
 		deviceTypeEClass = createEClass(DEVICE_TYPE);
 		createEAttribute(deviceTypeEClass, DEVICE_TYPE__DEVICE_TYPE);
+		createEReference(deviceTypeEClass, DEVICE_TYPE__DEVICES);
 
 		deviceEClass = createEClass(DEVICE);
 		createEAttribute(deviceEClass, DEVICE__NAME);
 		createEReference(deviceEClass, DEVICE__ROOM);
+		createEReference(deviceEClass, DEVICE__DEVICETYPES);
 
 		actuatorEClass = createEClass(ACTUATOR);
 		createEReference(actuatorEClass, ACTUATOR__ACTUATORACTIVITY);
@@ -868,6 +888,9 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		initEAttribute(getDeviceType_DeviceType(), ecorePackage.getEString(), "deviceType", null, 0, 1,
 				DeviceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEReference(getDeviceType_Devices(), this.getDevice(), this.getDevice_Devicetypes(), "devices", null, 0, -1,
+				DeviceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(deviceEClass, Device.class, "Device", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDevice_Name(), ecorePackage.getEString(), "name", null, 0, 1, Device.class, !IS_TRANSIENT,
@@ -875,6 +898,9 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		initEReference(getDevice_Room(), this.getRoom(), this.getRoom_Devices(), "room", null, 1, 1, Device.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDevice_Devicetypes(), this.getDeviceType(), this.getDeviceType_Devices(), "devicetypes", null,
+				0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(actuatorEClass, Actuator.class, "Actuator", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

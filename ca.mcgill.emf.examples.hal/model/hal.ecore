@@ -3,12 +3,16 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="hal" nsURI="http://www.example.org/hal" nsPrefix="hal">
   <eClassifiers xsi:type="ecore:EClass" name="DeviceType" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="devices" upperBound="-1"
+        eType="#//Device" eOpposite="#//Device/devicetypes"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Device" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="room" lowerBound="1" eType="#//Room"
         eOpposite="#//Room/devices"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="devicetypes" upperBound="-1"
+        eType="#//DeviceType" eOpposite="#//DeviceType/devices"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Actuator" eSuperTypes="#//Device">
     <eStructuralFeatures xsi:type="ecore:EReference" name="actuatoractivity" upperBound="-1"

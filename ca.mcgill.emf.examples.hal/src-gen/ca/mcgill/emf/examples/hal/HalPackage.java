@@ -77,13 +77,22 @@ public interface HalPackage extends EPackage {
 	int DEVICE_TYPE__DEVICE_TYPE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Devices</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE_TYPE__DEVICES = 1;
+
+	/**
 	 * The number of structural features of the '<em>Device Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEVICE_TYPE_FEATURE_COUNT = 1;
+	int DEVICE_TYPE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Device Type</em>' class.
@@ -123,13 +132,22 @@ public interface HalPackage extends EPackage {
 	int DEVICE__ROOM = 1;
 
 	/**
+	 * The feature id for the '<em><b>Devicetypes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVICE__DEVICETYPES = 2;
+
+	/**
 	 * The number of structural features of the '<em>Device</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEVICE_FEATURE_COUNT = 2;
+	int DEVICE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Device</em>' class.
@@ -167,6 +185,15 @@ public interface HalPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTUATOR__ROOM = DEVICE__ROOM;
+
+	/**
+	 * The feature id for the '<em><b>Devicetypes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTUATOR__DEVICETYPES = DEVICE__DEVICETYPES;
 
 	/**
 	 * The feature id for the '<em><b>Actuatoractivity</b></em>' containment reference list.
@@ -711,6 +738,15 @@ public interface HalPackage extends EPackage {
 	int SENSOR__ROOM = DEVICE__ROOM;
 
 	/**
+	 * The feature id for the '<em><b>Devicetypes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENSOR__DEVICETYPES = DEVICE__DEVICETYPES;
+
+	/**
 	 * The feature id for the '<em><b>Sensoractivity</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -886,6 +922,15 @@ public interface HalPackage extends EPackage {
 	int SENSOR_TYPE__DEVICE_TYPE = DEVICE_TYPE__DEVICE_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Devices</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENSOR_TYPE__DEVICES = DEVICE_TYPE__DEVICES;
+
+	/**
 	 * The feature id for the '<em><b>Sensors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -930,6 +975,15 @@ public interface HalPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTUATOR_TYPE__DEVICE_TYPE = DEVICE_TYPE__DEVICE_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Devices</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTUATOR_TYPE__DEVICES = DEVICE_TYPE__DEVICES;
 
 	/**
 	 * The feature id for the '<em><b>Actuators</b></em>' reference list.
@@ -990,6 +1044,17 @@ public interface HalPackage extends EPackage {
 	EAttribute getDeviceType_DeviceType();
 
 	/**
+	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.DeviceType#getDevices <em>Devices</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Devices</em>'.
+	 * @see ca.mcgill.emf.examples.hal.DeviceType#getDevices()
+	 * @see #getDeviceType()
+	 * @generated
+	 */
+	EReference getDeviceType_Devices();
+
+	/**
 	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Device <em>Device</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1020,6 +1085,17 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDevice_Room();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.Device#getDevicetypes <em>Devicetypes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Devicetypes</em>'.
+	 * @see ca.mcgill.emf.examples.hal.Device#getDevicetypes()
+	 * @see #getDevice()
+	 * @generated
+	 */
+	EReference getDevice_Devicetypes();
 
 	/**
 	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Actuator <em>Actuator</em>}'.
@@ -1562,6 +1638,14 @@ public interface HalPackage extends EPackage {
 		EAttribute DEVICE_TYPE__DEVICE_TYPE = eINSTANCE.getDeviceType_DeviceType();
 
 		/**
+		 * The meta object literal for the '<em><b>Devices</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEVICE_TYPE__DEVICES = eINSTANCE.getDeviceType_Devices();
+
+		/**
 		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.DeviceImpl <em>Device</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1586,6 +1670,14 @@ public interface HalPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DEVICE__ROOM = eINSTANCE.getDevice_Room();
+
+		/**
+		 * The meta object literal for the '<em><b>Devicetypes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEVICE__DEVICETYPES = eINSTANCE.getDevice_Devicetypes();
 
 		/**
 		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.ActuatorImpl <em>Actuator</em>}' class.

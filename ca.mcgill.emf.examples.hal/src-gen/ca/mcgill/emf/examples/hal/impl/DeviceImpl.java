@@ -3,15 +3,20 @@
 package ca.mcgill.emf.examples.hal.impl;
 
 import ca.mcgill.emf.examples.hal.Device;
+import ca.mcgill.emf.examples.hal.DeviceType;
 import ca.mcgill.emf.examples.hal.HalPackage;
 import ca.mcgill.emf.examples.hal.Room;
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.DeviceImpl#getName <em>Name</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.DeviceImpl#getRoom <em>Room</em>}</li>
+ *   <li>{@link ca.mcgill.emf.examples.hal.impl.DeviceImpl#getDevicetypes <em>Devicetypes</em>}</li>
  * </ul>
  *
  * @generated
@@ -57,6 +63,16 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected Room room;
+
+	/**
+	 * The cached value of the '{@link #getDevicetypes() <em>Devicetypes</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDevicetypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<DeviceType> devicetypes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -167,6 +183,19 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<DeviceType> getDevicetypes() {
+		if (devicetypes == null) {
+			devicetypes = new EObjectWithInverseResolvingEList.ManyInverse<DeviceType>(DeviceType.class, this,
+					HalPackage.DEVICE__DEVICETYPES, HalPackage.DEVICE_TYPE__DEVICES);
+		}
+		return devicetypes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -175,6 +204,8 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 			if (room != null)
 				msgs = ((InternalEObject) room).eInverseRemove(this, HalPackage.ROOM__DEVICES, Room.class, msgs);
 			return basicSetRoom((Room) otherEnd, msgs);
+		case HalPackage.DEVICE__DEVICETYPES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getDevicetypes()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -189,6 +220,8 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 		case HalPackage.DEVICE__ROOM:
 			return basicSetRoom(null, msgs);
+		case HalPackage.DEVICE__DEVICETYPES:
+			return ((InternalEList<?>) getDevicetypes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -207,6 +240,8 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 			if (resolve)
 				return getRoom();
 			return basicGetRoom();
+		case HalPackage.DEVICE__DEVICETYPES:
+			return getDevicetypes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -226,6 +261,10 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 		case HalPackage.DEVICE__ROOM:
 			setRoom((Room) newValue);
 			return;
+		case HalPackage.DEVICE__DEVICETYPES:
+			getDevicetypes().clear();
+			getDevicetypes().addAll((Collection<? extends DeviceType>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -244,6 +283,9 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 		case HalPackage.DEVICE__ROOM:
 			setRoom((Room) null);
 			return;
+		case HalPackage.DEVICE__DEVICETYPES:
+			getDevicetypes().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -260,6 +302,8 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case HalPackage.DEVICE__ROOM:
 			return room != null;
+		case HalPackage.DEVICE__DEVICETYPES:
+			return devicetypes != null && !devicetypes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

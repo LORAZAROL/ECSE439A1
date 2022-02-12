@@ -2,6 +2,7 @@
  */
 package ca.mcgill.emf.examples.hal;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link ca.mcgill.emf.examples.hal.Device#getName <em>Name</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.Device#getRoom <em>Room</em>}</li>
+ *   <li>{@link ca.mcgill.emf.examples.hal.Device#getDevicetypes <em>Devicetypes</em>}</li>
  * </ul>
  *
  * @see ca.mcgill.emf.examples.hal.HalPackage#getDevice()
@@ -67,5 +69,19 @@ public interface Device extends EObject {
 	 * @generated
 	 */
 	void setRoom(Room value);
+
+	/**
+	 * Returns the value of the '<em><b>Devicetypes</b></em>' reference list.
+	 * The list contents are of type {@link ca.mcgill.emf.examples.hal.DeviceType}.
+	 * It is bidirectional and its opposite is '{@link ca.mcgill.emf.examples.hal.DeviceType#getDevices <em>Devices</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Devicetypes</em>' reference list.
+	 * @see ca.mcgill.emf.examples.hal.HalPackage#getDevice_Devicetypes()
+	 * @see ca.mcgill.emf.examples.hal.DeviceType#getDevices
+	 * @model opposite="devices"
+	 * @generated
+	 */
+	EList<DeviceType> getDevicetypes();
 
 } // Device

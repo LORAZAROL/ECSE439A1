@@ -17,10 +17,12 @@
     </genEnums>
     <genClasses ecoreClass="hal.ecore#//DeviceType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hal.ecore#//DeviceType/deviceType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hal.ecore#//DeviceType/devices"/>
     </genClasses>
     <genClasses ecoreClass="hal.ecore#//Device">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hal.ecore#//Device/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hal.ecore#//Device/room"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hal.ecore#//Device/devicetypes"/>
     </genClasses>
     <genClasses ecoreClass="hal.ecore#//Actuator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hal.ecore#//Actuator/actuatoractivity"/>

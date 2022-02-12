@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated hal -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="ca.mcgill.emf.examples.hal.presentation.HalModelWizardID"
+            name="%_UI_HalModelWizard_label"
+            class="ca.mcgill.emf.examples.hal.presentation.HalModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/HalModelFile.gif">
+         <description>%_UI_HalModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated hal -->
+      <editor
+            id="ca.mcgill.emf.examples.hal.presentation.HalEditorID"
+            name="%_UI_HalEditor_label"
+            icon="icons/full/obj16/HalModelFile.gif"
+            extensions="hal"
+            class="ca.mcgill.emf.examples.hal.presentation.HalEditor"
+            contributorClass="ca.mcgill.emf.examples.hal.presentation.HalActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
