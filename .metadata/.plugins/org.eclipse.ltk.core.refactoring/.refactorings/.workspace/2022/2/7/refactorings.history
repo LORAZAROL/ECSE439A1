@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;HALSystem&apos; to &apos;ca.mcgill.emf.examples.hal&apos;" description="Rename resource &apos;HALSystem&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/HALSystem" name="ca.mcgill.emf.examples.hal" stamp="1644583370706" updateReferences="true"/>&#x0A;<refactoring comment="Delete resource &apos;ca.mcgill.emf.examples.hal&apos;" deleteContents="true" description="Delete resource &apos;ca.mcgill.emf.examples.hal&apos;" element1="/ca.mcgill.emf.examples.hal" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1644583636677"/>
+</session>

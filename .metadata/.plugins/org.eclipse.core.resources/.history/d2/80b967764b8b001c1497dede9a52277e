@@ -1,0 +1,27 @@
+package ca.mcgill.emf.examples.hal.application;
+
+import java.util.List;
+
+import ca.mcgill.emf.examples.hal.*;
+
+public class HALSystemRecord {
+
+	public void addRoomToList(Room room) {
+		m_listOfRooms.add(room);
+	}
+	public void removeRootFromList() {
+		
+	}
+	public void updateRoomNameInList(String oldName, String newName) {
+		
+	}
+	
+	private List<Room> m_listOfRooms;
+	public List<Room> getListOfRooms(){
+		return m_listOfRooms;
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="ca.mcgill.emf.examples.hal.impl.RoomImpl"/>
+    <fullyQualifiedTypeName name="org.eclipse.emf.common.util.EList"/>
+    <fullyQualifiedTypeName name="ca.mcgill.emf.examples.hal.HalFactory"/>
+</qualifiedTypeNameHistroy>

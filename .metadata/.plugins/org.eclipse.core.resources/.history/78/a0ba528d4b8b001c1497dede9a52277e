@@ -1,0 +1,15 @@
+package ca.mcgill.emf.examples.hal.application;
+
+import java.util.List;
+
+import ca.mcgill.emf.examples.hal.*;
+
+public class HALSystemRecord {
+
+	/**
+	 * The container of all rooms in this system
+	 */
+	public List<Room> ListOfRooms;
+	
+	
+}

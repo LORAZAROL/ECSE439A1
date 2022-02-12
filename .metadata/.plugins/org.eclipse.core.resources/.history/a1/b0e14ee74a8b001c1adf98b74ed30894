@@ -1,0 +1,9 @@
+package ca.mcgill.emf.examples.hal.application;
+
+import ca.mcgill.emf.examples.hal.*;
+
+public class HALSystemRecord {
+
+	private List<Room> m_rooms;
+	
+}

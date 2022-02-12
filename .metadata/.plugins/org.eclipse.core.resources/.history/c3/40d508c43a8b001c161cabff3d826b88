@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="hal" nsURI="http://www.example.org/hal" nsPrefix="hal">
+  <eClassifiers xsi:type="ecore:EClass" name="DeviceType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Device" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="devicetype" lowerBound="1"
+        upperBound="-1" eType="#//DeviceType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="room" lowerBound="1" eType="#//Room"
+        eOpposite="#//Room/device"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Actuator" eSuperTypes="#//Device"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Room">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="device" upperBound="-1"
+        eType="#//Device" eOpposite="#//Device/room"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SmartHome">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="postalCode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="room" upperBound="-1" eType="#//Room"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Owner">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="smarthome" upperBound="-1"
+        eType="#//SmartHome"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HomeAutomationSystem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="smarthome" upperBound="-1"
+        eType="#//SmartHome" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>
