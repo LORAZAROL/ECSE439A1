@@ -784,14 +784,14 @@ public interface HalPackage extends EPackage {
 	int PRECONDITION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.impl.CompositionImpl <em>Composition</em>}' class.
+	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.impl.OperandImpl <em>Operand</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see ca.mcgill.emf.examples.hal.impl.CompositionImpl
-	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getComposition()
+	 * @see ca.mcgill.emf.examples.hal.impl.OperandImpl
+	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getOperand()
 	 * @generated
 	 */
-	int COMPOSITION = 15;
+	int OPERAND = 15;
 
 	/**
 	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
@@ -800,71 +800,34 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITION__PRECONDITION = PRECONDITION_FEATURE_COUNT + 0;
+	int OPERAND__PRECONDITION = PRECONDITION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Composition</em>' class.
+	 * The feature id for the '<em><b>Sentence</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITION_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 1;
+	int OPERAND__SENTENCE = PRECONDITION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Composition</em>' class.
+	 * The number of structural features of the '<em>Operand</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITION_OPERATION_COUNT = PRECONDITION_OPERATION_COUNT + 0;
+	int OPERAND_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.impl.StatementImpl <em>Statement</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ca.mcgill.emf.examples.hal.impl.StatementImpl
-	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getStatement()
-	 * @generated
-	 */
-	int STATEMENT = 16;
-
-	/**
-	 * The feature id for the '<em><b>Sensor</b></em>' reference list.
+	 * The number of operations of the '<em>Operand</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATEMENT__SENSOR = PRECONDITION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATEMENT__OPERATION = PRECONDITION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Statement</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATEMENT_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Statement</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATEMENT_OPERATION_COUNT = PRECONDITION_OPERATION_COUNT + 0;
+	int OPERAND_OPERATION_COUNT = PRECONDITION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.impl.OperationImpl <em>Operation</em>}' class.
@@ -874,7 +837,16 @@ public interface HalPackage extends EPackage {
 	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getOperation()
 	 * @generated
 	 */
-	int OPERATION = 17;
+	int OPERATION = 16;
+
+	/**
+	 * The feature id for the '<em><b>Sensor</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__SENSOR = PRECONDITION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Boolean Operator</b></em>' attribute.
@@ -883,7 +855,7 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__BOOLEAN_OPERATOR = 0;
+	int OPERATION__BOOLEAN_OPERATOR = PRECONDITION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Operation</em>' class.
@@ -892,7 +864,7 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_FEATURE_COUNT = 1;
+	int OPERATION_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Operation</em>' class.
@@ -901,7 +873,7 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_OPERATION_COUNT = 0;
+	int OPERATION_OPERATION_COUNT = PRECONDITION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -911,7 +883,7 @@ public interface HalPackage extends EPackage {
 	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getBooleanOperator()
 	 * @generated
 	 */
-	int BOOLEAN_OPERATOR = 18;
+	int BOOLEAN_OPERATOR = 17;
 
 	/**
 	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.DeviceType <em>Device Type</em>}'.
@@ -1339,57 +1311,36 @@ public interface HalPackage extends EPackage {
 	EClass getPrecondition();
 
 	/**
-	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Composition <em>Composition</em>}'.
+	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Operand <em>Operand</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Composition</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Composition
+	 * @return the meta object for class '<em>Operand</em>'.
+	 * @see ca.mcgill.emf.examples.hal.Operand
 	 * @generated
 	 */
-	EClass getComposition();
+	EClass getOperand();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ca.mcgill.emf.examples.hal.Composition#getPrecondition <em>Precondition</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ca.mcgill.emf.examples.hal.Operand#getPrecondition <em>Precondition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Precondition</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Composition#getPrecondition()
-	 * @see #getComposition()
+	 * @see ca.mcgill.emf.examples.hal.Operand#getPrecondition()
+	 * @see #getOperand()
 	 * @generated
 	 */
-	EReference getComposition_Precondition();
+	EReference getOperand_Precondition();
 
 	/**
-	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Statement <em>Statement</em>}'.
+	 * Returns the meta object for the attribute '{@link ca.mcgill.emf.examples.hal.Operand#getSentence <em>Sentence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Statement</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Statement
+	 * @return the meta object for the attribute '<em>Sentence</em>'.
+	 * @see ca.mcgill.emf.examples.hal.Operand#getSentence()
+	 * @see #getOperand()
 	 * @generated
 	 */
-	EClass getStatement();
-
-	/**
-	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.Statement#getSensor <em>Sensor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Sensor</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Statement#getSensor()
-	 * @see #getStatement()
-	 * @generated
-	 */
-	EReference getStatement_Sensor();
-
-	/**
-	 * Returns the meta object for the reference '{@link ca.mcgill.emf.examples.hal.Statement#getOperation <em>Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Operation</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Statement#getOperation()
-	 * @see #getStatement()
-	 * @generated
-	 */
-	EReference getStatement_Operation();
+	EAttribute getOperand_Sentence();
 
 	/**
 	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Operation <em>Operation</em>}'.
@@ -1400,6 +1351,17 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getOperation();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.Operation#getSensor <em>Sensor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Sensor</em>'.
+	 * @see ca.mcgill.emf.examples.hal.Operation#getSensor()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EReference getOperation_Sensor();
 
 	/**
 	 * Returns the meta object for the attribute '{@link ca.mcgill.emf.examples.hal.Operation#getBooleanOperator <em>Boolean Operator</em>}'.
@@ -1796,14 +1758,14 @@ public interface HalPackage extends EPackage {
 		EClass PRECONDITION = eINSTANCE.getPrecondition();
 
 		/**
-		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.CompositionImpl <em>Composition</em>}' class.
+		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.OperandImpl <em>Operand</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see ca.mcgill.emf.examples.hal.impl.CompositionImpl
-		 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getComposition()
+		 * @see ca.mcgill.emf.examples.hal.impl.OperandImpl
+		 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getOperand()
 		 * @generated
 		 */
-		EClass COMPOSITION = eINSTANCE.getComposition();
+		EClass OPERAND = eINSTANCE.getOperand();
 
 		/**
 		 * The meta object literal for the '<em><b>Precondition</b></em>' containment reference list feature.
@@ -1811,33 +1773,15 @@ public interface HalPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPOSITION__PRECONDITION = eINSTANCE.getComposition_Precondition();
+		EReference OPERAND__PRECONDITION = eINSTANCE.getOperand_Precondition();
 
 		/**
-		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.StatementImpl <em>Statement</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see ca.mcgill.emf.examples.hal.impl.StatementImpl
-		 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getStatement()
-		 * @generated
-		 */
-		EClass STATEMENT = eINSTANCE.getStatement();
-
-		/**
-		 * The meta object literal for the '<em><b>Sensor</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Sentence</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATEMENT__SENSOR = eINSTANCE.getStatement_Sensor();
-
-		/**
-		 * The meta object literal for the '<em><b>Operation</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference STATEMENT__OPERATION = eINSTANCE.getStatement_Operation();
+		EAttribute OPERAND__SENTENCE = eINSTANCE.getOperand_Sentence();
 
 		/**
 		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.OperationImpl <em>Operation</em>}' class.
@@ -1848,6 +1792,14 @@ public interface HalPackage extends EPackage {
 		 * @generated
 		 */
 		EClass OPERATION = eINSTANCE.getOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Sensor</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__SENSOR = eINSTANCE.getOperation_Sensor();
 
 		/**
 		 * The meta object literal for the '<em><b>Boolean Operator</b></em>' attribute feature.

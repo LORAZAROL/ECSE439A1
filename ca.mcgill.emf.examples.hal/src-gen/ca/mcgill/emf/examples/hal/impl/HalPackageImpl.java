@@ -8,13 +8,13 @@ import ca.mcgill.emf.examples.hal.ActuatorActivity;
 import ca.mcgill.emf.examples.hal.AutomationActivity;
 import ca.mcgill.emf.examples.hal.AutomationRule;
 import ca.mcgill.emf.examples.hal.BooleanOperator;
-import ca.mcgill.emf.examples.hal.Composition;
 import ca.mcgill.emf.examples.hal.ControlCommand;
 import ca.mcgill.emf.examples.hal.Device;
 import ca.mcgill.emf.examples.hal.DeviceType;
 import ca.mcgill.emf.examples.hal.HalFactory;
 import ca.mcgill.emf.examples.hal.HalPackage;
 import ca.mcgill.emf.examples.hal.HomeAutomationSystem;
+import ca.mcgill.emf.examples.hal.Operand;
 import ca.mcgill.emf.examples.hal.Operation;
 import ca.mcgill.emf.examples.hal.Owner;
 import ca.mcgill.emf.examples.hal.Precondition;
@@ -22,8 +22,6 @@ import ca.mcgill.emf.examples.hal.Room;
 import ca.mcgill.emf.examples.hal.Sensor;
 import ca.mcgill.emf.examples.hal.SensorActivity;
 import ca.mcgill.emf.examples.hal.SmartHome;
-import ca.mcgill.emf.examples.hal.Statement;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -151,14 +149,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass compositionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass statementEClass = null;
+	private EClass operandEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -606,8 +597,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getComposition() {
-		return compositionEClass;
+	public EClass getOperand() {
+		return operandEClass;
 	}
 
 	/**
@@ -615,8 +606,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComposition_Precondition() {
-		return (EReference) compositionEClass.getEStructuralFeatures().get(0);
+	public EReference getOperand_Precondition() {
+		return (EReference) operandEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -624,26 +615,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getStatement() {
-		return statementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getStatement_Sensor() {
-		return (EReference) statementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getStatement_Operation() {
-		return (EReference) statementEClass.getEStructuralFeatures().get(1);
+	public EAttribute getOperand_Sentence() {
+		return (EAttribute) operandEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -660,8 +633,17 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getOperation_Sensor() {
+		return (EReference) operationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getOperation_BooleanOperator() {
-		return (EAttribute) operationEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) operationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -757,14 +739,12 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 
 		preconditionEClass = createEClass(PRECONDITION);
 
-		compositionEClass = createEClass(COMPOSITION);
-		createEReference(compositionEClass, COMPOSITION__PRECONDITION);
-
-		statementEClass = createEClass(STATEMENT);
-		createEReference(statementEClass, STATEMENT__SENSOR);
-		createEReference(statementEClass, STATEMENT__OPERATION);
+		operandEClass = createEClass(OPERAND);
+		createEReference(operandEClass, OPERAND__PRECONDITION);
+		createEAttribute(operandEClass, OPERAND__SENTENCE);
 
 		operationEClass = createEClass(OPERATION);
+		createEReference(operationEClass, OPERATION__SENSOR);
 		createEAttribute(operationEClass, OPERATION__BOOLEAN_OPERATOR);
 
 		// Create enums
@@ -809,8 +789,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		actuatorActivityEClass.getESuperTypes().add(this.getActivity());
 		sensorActivityEClass.getESuperTypes().add(this.getActivity());
 		sensorEClass.getESuperTypes().add(this.getDevice());
-		compositionEClass.getESuperTypes().add(this.getPrecondition());
-		statementEClass.getESuperTypes().add(this.getPrecondition());
+		operandEClass.getESuperTypes().add(this.getPrecondition());
+		operationEClass.getESuperTypes().add(this.getPrecondition());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(deviceTypeEClass, DeviceType.class, "DeviceType", !IS_ABSTRACT, !IS_INTERFACE,
@@ -922,23 +902,18 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		initEClass(preconditionEClass, Precondition.class, "Precondition", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(compositionEClass, Composition.class, "Composition", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getComposition_Precondition(), this.getPrecondition(), null, "precondition", null, 0, -1,
-				Composition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEClass(operandEClass, Operand.class, "Operand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperand_Precondition(), this.getPrecondition(), null, "precondition", null, 0, -1,
+				Operand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStatement_Sensor(), this.getSensor(), null, "sensor", null, 1, 2, Statement.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStatement_Operation(), this.getOperation(), null, "operation", null, 1, 1, Statement.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperand_Sentence(), ecorePackage.getEString(), "sentence", null, 0, 1, Operand.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperation_Sensor(), this.getSensor(), null, "sensor", null, 1, 2, Operation.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperation_BooleanOperator(), this.getBooleanOperator(), "booleanOperator", null, 0, 1,
 				Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);

@@ -142,13 +142,8 @@ public class HalAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseComposition(Composition object) {
-			return createCompositionAdapter();
-		}
-
-		@Override
-		public Adapter caseStatement(Statement object) {
-			return createStatementAdapter();
+		public Adapter caseOperand(Operand object) {
+			return createOperandAdapter();
 		}
 
 		@Override
@@ -386,30 +381,16 @@ public class HalAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ca.mcgill.emf.examples.hal.Composition <em>Composition</em>}'.
+	 * Creates a new adapter for an object of class '{@link ca.mcgill.emf.examples.hal.Operand <em>Operand</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see ca.mcgill.emf.examples.hal.Composition
+	 * @see ca.mcgill.emf.examples.hal.Operand
 	 * @generated
 	 */
-	public Adapter createCompositionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link ca.mcgill.emf.examples.hal.Statement <em>Statement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see ca.mcgill.emf.examples.hal.Statement
-	 * @generated
-	 */
-	public Adapter createStatementAdapter() {
+	public Adapter createOperandAdapter() {
 		return null;
 	}
 

@@ -80,10 +80,8 @@ public class HalFactoryImpl extends EFactoryImpl implements HalFactory {
 			return createControlCommand();
 		case HalPackage.SENSOR:
 			return createSensor();
-		case HalPackage.COMPOSITION:
-			return createComposition();
-		case HalPackage.STATEMENT:
-			return createStatement();
+		case HalPackage.OPERAND:
+			return createOperand();
 		case HalPackage.OPERATION:
 			return createOperation();
 		default:
@@ -246,19 +244,9 @@ public class HalFactoryImpl extends EFactoryImpl implements HalFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Composition createComposition() {
-		CompositionImpl composition = new CompositionImpl();
-		return composition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Statement createStatement() {
-		StatementImpl statement = new StatementImpl();
-		return statement;
+	public Operand createOperand() {
+		OperandImpl operand = new OperandImpl();
+		return operand;
 	}
 
 	/**

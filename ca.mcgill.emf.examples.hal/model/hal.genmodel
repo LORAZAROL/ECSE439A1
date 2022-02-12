@@ -67,14 +67,12 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hal.ecore#//Sensor/sensoractivity"/>
     </genClasses>
     <genClasses ecoreClass="hal.ecore#//Precondition"/>
-    <genClasses ecoreClass="hal.ecore#//Composition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hal.ecore#//Composition/precondition"/>
-    </genClasses>
-    <genClasses ecoreClass="hal.ecore#//Statement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hal.ecore#//Statement/sensor"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hal.ecore#//Statement/operation"/>
+    <genClasses ecoreClass="hal.ecore#//Operand">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hal.ecore#//Operand/precondition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hal.ecore#//Operand/sentence"/>
     </genClasses>
     <genClasses ecoreClass="hal.ecore#//Operation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hal.ecore#//Operation/sensor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hal.ecore#//Operation/booleanOperator"/>
     </genClasses>
   </genPackages>

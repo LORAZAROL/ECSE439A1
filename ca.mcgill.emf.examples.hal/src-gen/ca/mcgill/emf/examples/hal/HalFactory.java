@@ -130,22 +130,13 @@ public interface HalFactory extends EFactory {
 	Sensor createSensor();
 
 	/**
-	 * Returns a new object of class '<em>Composition</em>'.
+	 * Returns a new object of class '<em>Operand</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Composition</em>'.
+	 * @return a new object of class '<em>Operand</em>'.
 	 * @generated
 	 */
-	Composition createComposition();
-
-	/**
-	 * Returns a new object of class '<em>Statement</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Statement</em>'.
-	 * @generated
-	 */
-	Statement createStatement();
+	Operand createOperand();
 
 	/**
 	 * Returns a new object of class '<em>Operation</em>'.

@@ -6,12 +6,15 @@ import ca.mcgill.emf.examples.hal.BooleanOperator;
 import ca.mcgill.emf.examples.hal.HalPackage;
 import ca.mcgill.emf.examples.hal.Operation;
 
+import ca.mcgill.emf.examples.hal.Sensor;
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,12 +24,23 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link ca.mcgill.emf.examples.hal.impl.OperationImpl#getSensor <em>Sensor</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.OperationImpl#getBooleanOperator <em>Boolean Operator</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class OperationImpl extends MinimalEObjectImpl.Container implements Operation {
+public class OperationImpl extends PreconditionImpl implements Operation {
+	/**
+	 * The cached value of the '{@link #getSensor() <em>Sensor</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSensor()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Sensor> sensor;
+
 	/**
 	 * The default value of the '{@link #getBooleanOperator() <em>Boolean Operator</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -71,6 +85,18 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Sensor> getSensor() {
+		if (sensor == null) {
+			sensor = new EObjectResolvingEList<Sensor>(Sensor.class, this, HalPackage.OPERATION__SENSOR);
+		}
+		return sensor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public BooleanOperator getBooleanOperator() {
 		return booleanOperator;
 	}
@@ -96,6 +122,8 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+		case HalPackage.OPERATION__SENSOR:
+			return getSensor();
 		case HalPackage.OPERATION__BOOLEAN_OPERATOR:
 			return getBooleanOperator();
 		}
@@ -107,9 +135,14 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+		case HalPackage.OPERATION__SENSOR:
+			getSensor().clear();
+			getSensor().addAll((Collection<? extends Sensor>) newValue);
+			return;
 		case HalPackage.OPERATION__BOOLEAN_OPERATOR:
 			setBooleanOperator((BooleanOperator) newValue);
 			return;
@@ -125,6 +158,9 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+		case HalPackage.OPERATION__SENSOR:
+			getSensor().clear();
+			return;
 		case HalPackage.OPERATION__BOOLEAN_OPERATOR:
 			setBooleanOperator(BOOLEAN_OPERATOR_EDEFAULT);
 			return;
@@ -140,6 +176,8 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case HalPackage.OPERATION__SENSOR:
+			return sensor != null && !sensor.isEmpty();
 		case HalPackage.OPERATION__BOOLEAN_OPERATOR:
 			return booleanOperator != BOOLEAN_OPERATOR_EDEFAULT;
 		}
