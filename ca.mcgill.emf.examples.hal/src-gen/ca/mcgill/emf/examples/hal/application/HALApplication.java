@@ -1,5 +1,7 @@
 package ca.mcgill.emf.examples.hal.application;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import ca.mcgill.emf.examples.hal.*;
 import ca.mcgill.emf.examples.hal.util.*;
 import ca.mcgill.emf.examples.hal.view.*;
