@@ -6,6 +6,7 @@ import ca.mcgill.emf.examples.hal.HalPackage;
 import ca.mcgill.emf.examples.hal.Sensor;
 import ca.mcgill.emf.examples.hal.SensorActivity;
 
+import ca.mcgill.emf.examples.hal.SensorType;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -16,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -27,6 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.SensorImpl#getSensoractivity <em>Sensoractivity</em>}</li>
+ *   <li>{@link ca.mcgill.emf.examples.hal.impl.SensorImpl#getSensortypes <em>Sensortypes</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,6 +44,16 @@ public class SensorImpl extends DeviceImpl implements Sensor {
 	 * @ordered
 	 */
 	protected EList<SensorActivity> sensoractivity;
+
+	/**
+	 * The cached value of the '{@link #getSensortypes() <em>Sensortypes</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSensortypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SensorType> sensortypes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -79,11 +92,41 @@ public class SensorImpl extends DeviceImpl implements Sensor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<SensorType> getSensortypes() {
+		if (sensortypes == null) {
+			sensortypes = new EObjectWithInverseResolvingEList.ManyInverse<SensorType>(SensorType.class, this,
+					HalPackage.SENSOR__SENSORTYPES, HalPackage.SENSOR_TYPE__SENSORS);
+		}
+		return sensortypes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case HalPackage.SENSOR__SENSORTYPES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getSensortypes()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case HalPackage.SENSOR__SENSORACTIVITY:
 			return ((InternalEList<?>) getSensoractivity()).basicRemove(otherEnd, msgs);
+		case HalPackage.SENSOR__SENSORTYPES:
+			return ((InternalEList<?>) getSensortypes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -98,6 +141,8 @@ public class SensorImpl extends DeviceImpl implements Sensor {
 		switch (featureID) {
 		case HalPackage.SENSOR__SENSORACTIVITY:
 			return getSensoractivity();
+		case HalPackage.SENSOR__SENSORTYPES:
+			return getSensortypes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -115,6 +160,10 @@ public class SensorImpl extends DeviceImpl implements Sensor {
 			getSensoractivity().clear();
 			getSensoractivity().addAll((Collection<? extends SensorActivity>) newValue);
 			return;
+		case HalPackage.SENSOR__SENSORTYPES:
+			getSensortypes().clear();
+			getSensortypes().addAll((Collection<? extends SensorType>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -130,6 +179,9 @@ public class SensorImpl extends DeviceImpl implements Sensor {
 		case HalPackage.SENSOR__SENSORACTIVITY:
 			getSensoractivity().clear();
 			return;
+		case HalPackage.SENSOR__SENSORTYPES:
+			getSensortypes().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -144,6 +196,8 @@ public class SensorImpl extends DeviceImpl implements Sensor {
 		switch (featureID) {
 		case HalPackage.SENSOR__SENSORACTIVITY:
 			return sensoractivity != null && !sensoractivity.isEmpty();
+		case HalPackage.SENSOR__SENSORTYPES:
+			return sensortypes != null && !sensortypes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

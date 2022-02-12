@@ -2,8 +2,6 @@
  */
 package ca.mcgill.emf.examples.hal;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link ca.mcgill.emf.examples.hal.Device#getName <em>Name</em>}</li>
- *   <li>{@link ca.mcgill.emf.examples.hal.Device#getDevicetype <em>Devicetype</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.Device#getRoom <em>Room</em>}</li>
  * </ul>
  *
@@ -46,18 +43,6 @@ public interface Device extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Devicetype</b></em>' reference list.
-	 * The list contents are of type {@link ca.mcgill.emf.examples.hal.DeviceType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Devicetype</em>' reference list.
-	 * @see ca.mcgill.emf.examples.hal.HalPackage#getDevice_Devicetype()
-	 * @model required="true"
-	 * @generated
-	 */
-	EList<DeviceType> getDevicetype();
 
 	/**
 	 * Returns the value of the '<em><b>Room</b></em>' reference.

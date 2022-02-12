@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see ca.mcgill.emf.examples.hal.HalPackage#getDeviceType()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface DeviceType extends EObject {

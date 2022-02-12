@@ -27,7 +27,7 @@ public class HALController {
 		
 		// Add if target not null
 		if(target != null) {
-			target.getRoom().add(r);
+			target.getRooms().add(r);
 		}
 	}
 	
@@ -51,7 +51,7 @@ public class HALController {
 			Device d = devices.get(i);
 			
 			// a device can have multiple types => list the types into type string
-			EList<DeviceType> dTypeList = d.getDevicetype();
+			EList<DeviceType> dTypeList = d.getDevicetypes();
 			String deviceType = "";
 			for(int j = 0; j < dTypeList.size(); j++) {
 				DeviceType dt = dTypeList.get(j);
@@ -91,7 +91,7 @@ public class HALController {
 		// get the target room to be deleted
 		Room room = getTargetRoom(smartHomeAddress, roomName);
 		if(room != null) {
-			home.getRoom().remove(room);
+			home.getRooms().remove(room);
 		}
 		
 		// todo: report error when not exist?
@@ -119,7 +119,7 @@ public class HALController {
 		
 		if(device != null) {
 			device.setName(deviceName); //todo: didn't check the uniqueness of name (already check the property to be ID)
-			device.getDevicetype().add(dType);
+			device.getDevicetypes().add(dType);
 			Room room = getTargetRoom(address, roomName);
 			room.getDevices().add(device);
 		}
@@ -240,7 +240,7 @@ public class HALController {
 	private EList<Room> getRoomsOfSmartHome(String address){
 		// get all smart homes and add their rooms into rooms list
 		SmartHome home = getTargetSmartHome(address);
-		EList<Room> rooms = home.getRoom();
+		EList<Room> rooms = home.getRooms();
 		
 		return rooms;
 	}

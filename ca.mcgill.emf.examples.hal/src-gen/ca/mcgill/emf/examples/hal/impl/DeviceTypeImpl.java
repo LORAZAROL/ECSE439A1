@@ -4,11 +4,8 @@ package ca.mcgill.emf.examples.hal.impl;
 
 import ca.mcgill.emf.examples.hal.DeviceType;
 import ca.mcgill.emf.examples.hal.HalPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -25,7 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class DeviceTypeImpl extends MinimalEObjectImpl.Container implements DeviceType {
+public abstract class DeviceTypeImpl extends MinimalEObjectImpl.Container implements DeviceType {
 	/**
 	 * The default value of the '{@link #getDeviceType() <em>Device Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -106,6 +103,7 @@ public class DeviceTypeImpl extends MinimalEObjectImpl.Container implements Devi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {

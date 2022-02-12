@@ -56,8 +56,6 @@ public class HalFactoryImpl extends EFactoryImpl implements HalFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case HalPackage.DEVICE_TYPE:
-			return createDeviceType();
 		case HalPackage.ACTUATOR:
 			return createActuator();
 		case HalPackage.ROOM:
@@ -84,6 +82,10 @@ public class HalFactoryImpl extends EFactoryImpl implements HalFactory {
 			return createOperand();
 		case HalPackage.OPERATION:
 			return createOperation();
+		case HalPackage.SENSOR_TYPE:
+			return createSensorType();
+		case HalPackage.ACTUATOR_TYPE:
+			return createActuatorType();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -117,16 +119,6 @@ public class HalFactoryImpl extends EFactoryImpl implements HalFactory {
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DeviceType createDeviceType() {
-		DeviceTypeImpl deviceType = new DeviceTypeImpl();
-		return deviceType;
 	}
 
 	/**
@@ -257,6 +249,26 @@ public class HalFactoryImpl extends EFactoryImpl implements HalFactory {
 	public Operation createOperation() {
 		OperationImpl operation = new OperationImpl();
 		return operation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SensorType createSensorType() {
+		SensorTypeImpl sensorType = new SensorTypeImpl();
+		return sensorType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActuatorType createActuatorType() {
+		ActuatorTypeImpl actuatorType = new ActuatorTypeImpl();
+		return actuatorType;
 	}
 
 	/**

@@ -114,22 +114,13 @@ public interface HalPackage extends EPackage {
 	int DEVICE__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Devicetype</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__DEVICETYPE = 1;
-
-	/**
 	 * The feature id for the '<em><b>Room</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEVICE__ROOM = 2;
+	int DEVICE__ROOM = 1;
 
 	/**
 	 * The number of structural features of the '<em>Device</em>' class.
@@ -138,7 +129,7 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEVICE_FEATURE_COUNT = 3;
+	int DEVICE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Device</em>' class.
@@ -167,15 +158,6 @@ public interface HalPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTUATOR__NAME = DEVICE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Devicetype</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTUATOR__DEVICETYPE = DEVICE__DEVICETYPE;
 
 	/**
 	 * The feature id for the '<em><b>Room</b></em>' reference.
@@ -214,13 +196,22 @@ public interface HalPackage extends EPackage {
 	int ACTUATOR__STATUS = DEVICE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Actuatortype</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTUATOR__ACTUATORTYPE = DEVICE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Actuator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTUATOR_FEATURE_COUNT = DEVICE_FEATURE_COUNT + 3;
+	int ACTUATOR_FEATURE_COUNT = DEVICE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Actuator</em>' class.
@@ -306,13 +297,13 @@ public interface HalPackage extends EPackage {
 	int SMART_HOME__POSTAL_CODE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Room</b></em>' reference list.
+	 * The feature id for the '<em><b>Rooms</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SMART_HOME__ROOM = 2;
+	int SMART_HOME__ROOMS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Automationrule</b></em>' reference list.
@@ -711,15 +702,6 @@ public interface HalPackage extends EPackage {
 	int SENSOR__NAME = DEVICE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Devicetype</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SENSOR__DEVICETYPE = DEVICE__DEVICETYPE;
-
-	/**
 	 * The feature id for the '<em><b>Room</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -738,13 +720,22 @@ public interface HalPackage extends EPackage {
 	int SENSOR__SENSORACTIVITY = DEVICE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Sensortypes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENSOR__SENSORTYPES = DEVICE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Sensor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SENSOR_FEATURE_COUNT = DEVICE_FEATURE_COUNT + 1;
+	int SENSOR_FEATURE_COUNT = DEVICE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Sensor</em>' class.
@@ -876,6 +867,98 @@ public interface HalPackage extends EPackage {
 	int OPERATION_OPERATION_COUNT = PRECONDITION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.impl.SensorTypeImpl <em>Sensor Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ca.mcgill.emf.examples.hal.impl.SensorTypeImpl
+	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getSensorType()
+	 * @generated
+	 */
+	int SENSOR_TYPE = 17;
+
+	/**
+	 * The feature id for the '<em><b>Device Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENSOR_TYPE__DEVICE_TYPE = DEVICE_TYPE__DEVICE_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Sensors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENSOR_TYPE__SENSORS = DEVICE_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Sensor Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENSOR_TYPE_FEATURE_COUNT = DEVICE_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Sensor Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENSOR_TYPE_OPERATION_COUNT = DEVICE_TYPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.impl.ActuatorTypeImpl <em>Actuator Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ca.mcgill.emf.examples.hal.impl.ActuatorTypeImpl
+	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getActuatorType()
+	 * @generated
+	 */
+	int ACTUATOR_TYPE = 18;
+
+	/**
+	 * The feature id for the '<em><b>Device Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTUATOR_TYPE__DEVICE_TYPE = DEVICE_TYPE__DEVICE_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Actuators</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTUATOR_TYPE__ACTUATORS = DEVICE_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Actuator Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTUATOR_TYPE_FEATURE_COUNT = DEVICE_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Actuator Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTUATOR_TYPE_OPERATION_COUNT = DEVICE_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.BooleanOperator <em>Boolean Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -883,7 +966,7 @@ public interface HalPackage extends EPackage {
 	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getBooleanOperator()
 	 * @generated
 	 */
-	int BOOLEAN_OPERATOR = 17;
+	int BOOLEAN_OPERATOR = 19;
 
 	/**
 	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.DeviceType <em>Device Type</em>}'.
@@ -926,17 +1009,6 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDevice_Name();
-
-	/**
-	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.Device#getDevicetype <em>Devicetype</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Devicetype</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Device#getDevicetype()
-	 * @see #getDevice()
-	 * @generated
-	 */
-	EReference getDevice_Devicetype();
 
 	/**
 	 * Returns the meta object for the reference '{@link ca.mcgill.emf.examples.hal.Device#getRoom <em>Room</em>}'.
@@ -991,6 +1063,17 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getActuator_Status();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.Actuator#getActuatortype <em>Actuatortype</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Actuatortype</em>'.
+	 * @see ca.mcgill.emf.examples.hal.Actuator#getActuatortype()
+	 * @see #getActuator()
+	 * @generated
+	 */
+	EReference getActuator_Actuatortype();
 
 	/**
 	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Room <em>Room</em>}'.
@@ -1057,15 +1140,15 @@ public interface HalPackage extends EPackage {
 	EAttribute getSmartHome_PostalCode();
 
 	/**
-	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.SmartHome#getRoom <em>Room</em>}'.
+	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.SmartHome#getRooms <em>Rooms</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Room</em>'.
-	 * @see ca.mcgill.emf.examples.hal.SmartHome#getRoom()
+	 * @return the meta object for the reference list '<em>Rooms</em>'.
+	 * @see ca.mcgill.emf.examples.hal.SmartHome#getRooms()
 	 * @see #getSmartHome()
 	 * @generated
 	 */
-	EReference getSmartHome_Room();
+	EReference getSmartHome_Rooms();
 
 	/**
 	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.SmartHome#getAutomationrule <em>Automationrule</em>}'.
@@ -1301,6 +1384,17 @@ public interface HalPackage extends EPackage {
 	EReference getSensor_Sensoractivity();
 
 	/**
+	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.Sensor#getSensortypes <em>Sensortypes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Sensortypes</em>'.
+	 * @see ca.mcgill.emf.examples.hal.Sensor#getSensortypes()
+	 * @see #getSensor()
+	 * @generated
+	 */
+	EReference getSensor_Sensortypes();
+
+	/**
 	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Precondition <em>Precondition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1375,6 +1469,48 @@ public interface HalPackage extends EPackage {
 	EAttribute getOperation_BooleanOperator();
 
 	/**
+	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.SensorType <em>Sensor Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sensor Type</em>'.
+	 * @see ca.mcgill.emf.examples.hal.SensorType
+	 * @generated
+	 */
+	EClass getSensorType();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.SensorType#getSensors <em>Sensors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Sensors</em>'.
+	 * @see ca.mcgill.emf.examples.hal.SensorType#getSensors()
+	 * @see #getSensorType()
+	 * @generated
+	 */
+	EReference getSensorType_Sensors();
+
+	/**
+	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.ActuatorType <em>Actuator Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Actuator Type</em>'.
+	 * @see ca.mcgill.emf.examples.hal.ActuatorType
+	 * @generated
+	 */
+	EClass getActuatorType();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.ActuatorType#getActuators <em>Actuators</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Actuators</em>'.
+	 * @see ca.mcgill.emf.examples.hal.ActuatorType#getActuators()
+	 * @see #getActuatorType()
+	 * @generated
+	 */
+	EReference getActuatorType_Actuators();
+
+	/**
 	 * Returns the meta object for enum '{@link ca.mcgill.emf.examples.hal.BooleanOperator <em>Boolean Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1444,14 +1580,6 @@ public interface HalPackage extends EPackage {
 		EAttribute DEVICE__NAME = eINSTANCE.getDevice_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Devicetype</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DEVICE__DEVICETYPE = eINSTANCE.getDevice_Devicetype();
-
-		/**
 		 * The meta object literal for the '<em><b>Room</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1492,6 +1620,14 @@ public interface HalPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ACTUATOR__STATUS = eINSTANCE.getActuator_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Actuatortype</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTUATOR__ACTUATORTYPE = eINSTANCE.getActuator_Actuatortype();
 
 		/**
 		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.RoomImpl <em>Room</em>}' class.
@@ -1546,12 +1682,12 @@ public interface HalPackage extends EPackage {
 		EAttribute SMART_HOME__POSTAL_CODE = eINSTANCE.getSmartHome_PostalCode();
 
 		/**
-		 * The meta object literal for the '<em><b>Room</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Rooms</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SMART_HOME__ROOM = eINSTANCE.getSmartHome_Room();
+		EReference SMART_HOME__ROOMS = eINSTANCE.getSmartHome_Rooms();
 
 		/**
 		 * The meta object literal for the '<em><b>Automationrule</b></em>' reference list feature.
@@ -1748,6 +1884,14 @@ public interface HalPackage extends EPackage {
 		EReference SENSOR__SENSORACTIVITY = eINSTANCE.getSensor_Sensoractivity();
 
 		/**
+		 * The meta object literal for the '<em><b>Sensortypes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SENSOR__SENSORTYPES = eINSTANCE.getSensor_Sensortypes();
+
+		/**
 		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.PreconditionImpl <em>Precondition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1808,6 +1952,42 @@ public interface HalPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OPERATION__BOOLEAN_OPERATOR = eINSTANCE.getOperation_BooleanOperator();
+
+		/**
+		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.SensorTypeImpl <em>Sensor Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ca.mcgill.emf.examples.hal.impl.SensorTypeImpl
+		 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getSensorType()
+		 * @generated
+		 */
+		EClass SENSOR_TYPE = eINSTANCE.getSensorType();
+
+		/**
+		 * The meta object literal for the '<em><b>Sensors</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SENSOR_TYPE__SENSORS = eINSTANCE.getSensorType_Sensors();
+
+		/**
+		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.ActuatorTypeImpl <em>Actuator Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ca.mcgill.emf.examples.hal.impl.ActuatorTypeImpl
+		 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getActuatorType()
+		 * @generated
+		 */
+		EClass ACTUATOR_TYPE = eINSTANCE.getActuatorType();
+
+		/**
+		 * The meta object literal for the '<em><b>Actuators</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTUATOR_TYPE__ACTUATORS = eINSTANCE.getActuatorType_Actuators();
 
 		/**
 		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.BooleanOperator <em>Boolean Operator</em>}' enum.

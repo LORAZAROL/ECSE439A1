@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="hal" nsURI="http://www.example.org/hal" nsPrefix="hal">
-  <eClassifiers xsi:type="ecore:EClass" name="DeviceType">
+  <eClassifiers xsi:type="ecore:EClass" name="DeviceType" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Device" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="devicetype" lowerBound="1"
-        upperBound="-1" eType="#//DeviceType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="room" lowerBound="1" eType="#//Room"
         eOpposite="#//Room/devices"/>
   </eClassifiers>
@@ -18,6 +16,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="controlcommand" upperBound="-1"
         eType="#//ControlCommand" eOpposite="#//ControlCommand/actuator"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actuatortype" upperBound="-1"
+        eType="#//ActuatorType" eOpposite="#//ActuatorType/actuators"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Room">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -27,7 +27,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="SmartHome">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="postalCode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="room" upperBound="-1" eType="#//Room"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rooms" upperBound="-1"
+        eType="#//Room"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="automationrule" upperBound="-1"
         eType="#//AutomationRule"/>
   </eClassifiers>
@@ -65,6 +66,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Sensor" eSuperTypes="#//Device">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sensoractivity" upperBound="-1"
         eType="#//SensorActivity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sensortypes" upperBound="-1"
+        eType="#//SensorType" eOpposite="#//SensorType/sensors"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Precondition" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Operand" eSuperTypes="#//Precondition">
@@ -81,5 +84,13 @@
     <eLiterals name="AND"/>
     <eLiterals name="OR" value="1"/>
     <eLiterals name="NOT" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SensorType" eSuperTypes="#//DeviceType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sensors" upperBound="-1"
+        eType="#//Sensor" eOpposite="#//Sensor/sensortypes"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActuatorType" eSuperTypes="#//DeviceType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actuators" upperBound="-1"
+        eType="#//Actuator" eOpposite="#//Actuator/actuatortype"/>
   </eClassifiers>
 </ecore:EPackage>

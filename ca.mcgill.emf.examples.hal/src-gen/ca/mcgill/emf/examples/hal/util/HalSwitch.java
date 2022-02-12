@@ -199,6 +199,24 @@ public class HalSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case HalPackage.SENSOR_TYPE: {
+			SensorType sensorType = (SensorType) theEObject;
+			T result = caseSensorType(sensorType);
+			if (result == null)
+				result = caseDeviceType(sensorType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case HalPackage.ACTUATOR_TYPE: {
+			ActuatorType actuatorType = (ActuatorType) theEObject;
+			T result = caseActuatorType(actuatorType);
+			if (result == null)
+				result = caseDeviceType(actuatorType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -456,6 +474,36 @@ public class HalSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOperation(Operation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sensor Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sensor Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSensorType(SensorType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Actuator Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Actuator Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseActuatorType(ActuatorType object) {
 		return null;
 	}
 

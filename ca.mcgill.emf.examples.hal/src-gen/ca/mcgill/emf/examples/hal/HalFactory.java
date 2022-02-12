@@ -22,15 +22,6 @@ public interface HalFactory extends EFactory {
 	HalFactory eINSTANCE = ca.mcgill.emf.examples.hal.impl.HalFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Device Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Device Type</em>'.
-	 * @generated
-	 */
-	DeviceType createDeviceType();
-
-	/**
 	 * Returns a new object of class '<em>Actuator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -146,6 +137,24 @@ public interface HalFactory extends EFactory {
 	 * @generated
 	 */
 	Operation createOperation();
+
+	/**
+	 * Returns a new object of class '<em>Sensor Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sensor Type</em>'.
+	 * @generated
+	 */
+	SensorType createSensorType();
+
+	/**
+	 * Returns a new object of class '<em>Actuator Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Actuator Type</em>'.
+	 * @generated
+	 */
+	ActuatorType createActuatorType();
 
 	/**
 	 * Returns the package supported by this factory.

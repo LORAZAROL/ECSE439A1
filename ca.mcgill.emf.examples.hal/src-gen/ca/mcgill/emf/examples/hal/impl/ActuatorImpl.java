@@ -4,6 +4,7 @@ package ca.mcgill.emf.examples.hal.impl;
 
 import ca.mcgill.emf.examples.hal.Actuator;
 import ca.mcgill.emf.examples.hal.ActuatorActivity;
+import ca.mcgill.emf.examples.hal.ActuatorType;
 import ca.mcgill.emf.examples.hal.ControlCommand;
 import ca.mcgill.emf.examples.hal.HalPackage;
 
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.ActuatorImpl#getActuatoractivity <em>Actuatoractivity</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.ActuatorImpl#getControlcommand <em>Controlcommand</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.ActuatorImpl#isStatus <em>Status</em>}</li>
+ *   <li>{@link ca.mcgill.emf.examples.hal.impl.ActuatorImpl#getActuatortype <em>Actuatortype</em>}</li>
  * </ul>
  *
  * @generated
@@ -78,6 +80,16 @@ public class ActuatorImpl extends DeviceImpl implements Actuator {
 	 * @ordered
 	 */
 	protected boolean status = STATUS_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getActuatortype() <em>Actuatortype</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActuatortype()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ActuatorType> actuatortype;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -150,12 +162,27 @@ public class ActuatorImpl extends DeviceImpl implements Actuator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ActuatorType> getActuatortype() {
+		if (actuatortype == null) {
+			actuatortype = new EObjectWithInverseResolvingEList.ManyInverse<ActuatorType>(ActuatorType.class, this,
+					HalPackage.ACTUATOR__ACTUATORTYPE, HalPackage.ACTUATOR_TYPE__ACTUATORS);
+		}
+		return actuatortype;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case HalPackage.ACTUATOR__CONTROLCOMMAND:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getControlcommand()).basicAdd(otherEnd, msgs);
+		case HalPackage.ACTUATOR__ACTUATORTYPE:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getActuatortype()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -172,6 +199,8 @@ public class ActuatorImpl extends DeviceImpl implements Actuator {
 			return ((InternalEList<?>) getActuatoractivity()).basicRemove(otherEnd, msgs);
 		case HalPackage.ACTUATOR__CONTROLCOMMAND:
 			return ((InternalEList<?>) getControlcommand()).basicRemove(otherEnd, msgs);
+		case HalPackage.ACTUATOR__ACTUATORTYPE:
+			return ((InternalEList<?>) getActuatortype()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -190,6 +219,8 @@ public class ActuatorImpl extends DeviceImpl implements Actuator {
 			return getControlcommand();
 		case HalPackage.ACTUATOR__STATUS:
 			return isStatus();
+		case HalPackage.ACTUATOR__ACTUATORTYPE:
+			return getActuatortype();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -214,6 +245,10 @@ public class ActuatorImpl extends DeviceImpl implements Actuator {
 		case HalPackage.ACTUATOR__STATUS:
 			setStatus((Boolean) newValue);
 			return;
+		case HalPackage.ACTUATOR__ACTUATORTYPE:
+			getActuatortype().clear();
+			getActuatortype().addAll((Collection<? extends ActuatorType>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -235,6 +270,9 @@ public class ActuatorImpl extends DeviceImpl implements Actuator {
 		case HalPackage.ACTUATOR__STATUS:
 			setStatus(STATUS_EDEFAULT);
 			return;
+		case HalPackage.ACTUATOR__ACTUATORTYPE:
+			getActuatortype().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -253,6 +291,8 @@ public class ActuatorImpl extends DeviceImpl implements Actuator {
 			return controlcommand != null && !controlcommand.isEmpty();
 		case HalPackage.ACTUATOR__STATUS:
 			return status != STATUS_EDEFAULT;
+		case HalPackage.ACTUATOR__ACTUATORTYPE:
+			return actuatortype != null && !actuatortype.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

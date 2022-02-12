@@ -5,6 +5,7 @@ package ca.mcgill.emf.examples.hal.impl;
 import ca.mcgill.emf.examples.hal.Activity;
 import ca.mcgill.emf.examples.hal.Actuator;
 import ca.mcgill.emf.examples.hal.ActuatorActivity;
+import ca.mcgill.emf.examples.hal.ActuatorType;
 import ca.mcgill.emf.examples.hal.AutomationActivity;
 import ca.mcgill.emf.examples.hal.AutomationRule;
 import ca.mcgill.emf.examples.hal.BooleanOperator;
@@ -21,6 +22,7 @@ import ca.mcgill.emf.examples.hal.Precondition;
 import ca.mcgill.emf.examples.hal.Room;
 import ca.mcgill.emf.examples.hal.Sensor;
 import ca.mcgill.emf.examples.hal.SensorActivity;
+import ca.mcgill.emf.examples.hal.SensorType;
 import ca.mcgill.emf.examples.hal.SmartHome;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -163,6 +165,20 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass sensorTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass actuatorTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum booleanOperatorEEnum = null;
 
 	/**
@@ -273,17 +289,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDevice_Devicetype() {
-		return (EReference) deviceEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getDevice_Room() {
-		return (EReference) deviceEClass.getEStructuralFeatures().get(2);
+		return (EReference) deviceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -320,6 +327,15 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 */
 	public EAttribute getActuator_Status() {
 		return (EAttribute) actuatorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActuator_Actuatortype() {
+		return (EReference) actuatorEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -381,7 +397,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSmartHome_Room() {
+	public EReference getSmartHome_Rooms() {
 		return (EReference) smartHomeEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -588,6 +604,15 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSensor_Sensortypes() {
+		return (EReference) sensorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPrecondition() {
 		return preconditionEClass;
 	}
@@ -651,6 +676,42 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSensorType() {
+		return sensorTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSensorType_Sensors() {
+		return (EReference) sensorTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getActuatorType() {
+		return actuatorTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActuatorType_Actuators() {
+		return (EReference) actuatorTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getBooleanOperator() {
 		return booleanOperatorEEnum;
 	}
@@ -689,13 +750,13 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 
 		deviceEClass = createEClass(DEVICE);
 		createEAttribute(deviceEClass, DEVICE__NAME);
-		createEReference(deviceEClass, DEVICE__DEVICETYPE);
 		createEReference(deviceEClass, DEVICE__ROOM);
 
 		actuatorEClass = createEClass(ACTUATOR);
 		createEReference(actuatorEClass, ACTUATOR__ACTUATORACTIVITY);
 		createEReference(actuatorEClass, ACTUATOR__CONTROLCOMMAND);
 		createEAttribute(actuatorEClass, ACTUATOR__STATUS);
+		createEReference(actuatorEClass, ACTUATOR__ACTUATORTYPE);
 
 		roomEClass = createEClass(ROOM);
 		createEAttribute(roomEClass, ROOM__NAME);
@@ -704,7 +765,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		smartHomeEClass = createEClass(SMART_HOME);
 		createEAttribute(smartHomeEClass, SMART_HOME__ADDRESS);
 		createEAttribute(smartHomeEClass, SMART_HOME__POSTAL_CODE);
-		createEReference(smartHomeEClass, SMART_HOME__ROOM);
+		createEReference(smartHomeEClass, SMART_HOME__ROOMS);
 		createEReference(smartHomeEClass, SMART_HOME__AUTOMATIONRULE);
 
 		ownerEClass = createEClass(OWNER);
@@ -736,6 +797,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 
 		sensorEClass = createEClass(SENSOR);
 		createEReference(sensorEClass, SENSOR__SENSORACTIVITY);
+		createEReference(sensorEClass, SENSOR__SENSORTYPES);
 
 		preconditionEClass = createEClass(PRECONDITION);
 
@@ -746,6 +808,12 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		operationEClass = createEClass(OPERATION);
 		createEReference(operationEClass, OPERATION__SENSOR);
 		createEAttribute(operationEClass, OPERATION__BOOLEAN_OPERATOR);
+
+		sensorTypeEClass = createEClass(SENSOR_TYPE);
+		createEReference(sensorTypeEClass, SENSOR_TYPE__SENSORS);
+
+		actuatorTypeEClass = createEClass(ACTUATOR_TYPE);
+		createEReference(actuatorTypeEClass, ACTUATOR_TYPE__ACTUATORS);
 
 		// Create enums
 		booleanOperatorEEnum = createEEnum(BOOLEAN_OPERATOR);
@@ -791,9 +859,11 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		sensorEClass.getESuperTypes().add(this.getDevice());
 		operandEClass.getESuperTypes().add(this.getPrecondition());
 		operationEClass.getESuperTypes().add(this.getPrecondition());
+		sensorTypeEClass.getESuperTypes().add(this.getDeviceType());
+		actuatorTypeEClass.getESuperTypes().add(this.getDeviceType());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(deviceTypeEClass, DeviceType.class, "DeviceType", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(deviceTypeEClass, DeviceType.class, "DeviceType", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDeviceType_DeviceType(), ecorePackage.getEString(), "deviceType", null, 0, 1,
 				DeviceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
@@ -802,9 +872,6 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		initEClass(deviceEClass, Device.class, "Device", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDevice_Name(), ecorePackage.getEString(), "name", null, 0, 1, Device.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDevice_Devicetype(), this.getDeviceType(), null, "devicetype", null, 1, -1, Device.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_Room(), this.getRoom(), this.getRoom_Devices(), "room", null, 1, 1, Device.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -819,6 +886,9 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActuator_Status(), theXMLTypePackage.getBoolean(), "status", null, 0, 1, Actuator.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActuator_Actuatortype(), this.getActuatorType(), this.getActuatorType_Actuators(),
+				"actuatortype", null, 0, -1, Actuator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(roomEClass, Room.class, "Room", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRoom_Name(), ecorePackage.getEString(), "name", null, 0, 1, Room.class, !IS_TRANSIENT,
@@ -833,7 +903,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSmartHome_PostalCode(), ecorePackage.getEString(), "postalCode", null, 0, 1, SmartHome.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSmartHome_Room(), this.getRoom(), null, "room", null, 0, -1, SmartHome.class, !IS_TRANSIENT,
+		initEReference(getSmartHome_Rooms(), this.getRoom(), null, "rooms", null, 0, -1, SmartHome.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEReference(getSmartHome_Automationrule(), this.getAutomationRule(), null, "automationrule", null, 0, -1,
@@ -898,6 +968,9 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		initEReference(getSensor_Sensoractivity(), this.getSensorActivity(), null, "sensoractivity", null, 0, -1,
 				Sensor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSensor_Sensortypes(), this.getSensorType(), this.getSensorType_Sensors(), "sensortypes", null,
+				0, -1, Sensor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(preconditionEClass, Precondition.class, "Precondition", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -917,6 +990,18 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		initEAttribute(getOperation_BooleanOperator(), this.getBooleanOperator(), "booleanOperator", null, 0, 1,
 				Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(sensorTypeEClass, SensorType.class, "SensorType", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSensorType_Sensors(), this.getSensor(), this.getSensor_Sensortypes(), "sensors", null, 0, -1,
+				SensorType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(actuatorTypeEClass, ActuatorType.class, "ActuatorType", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getActuatorType_Actuators(), this.getActuator(), this.getActuator_Actuatortype(), "actuators",
+				null, 0, -1, ActuatorType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(booleanOperatorEEnum, BooleanOperator.class, "BooleanOperator");

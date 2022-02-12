@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.SmartHomeImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.SmartHomeImpl#getPostalCode <em>Postal Code</em>}</li>
- *   <li>{@link ca.mcgill.emf.examples.hal.impl.SmartHomeImpl#getRoom <em>Room</em>}</li>
+ *   <li>{@link ca.mcgill.emf.examples.hal.impl.SmartHomeImpl#getRooms <em>Rooms</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.SmartHomeImpl#getAutomationrule <em>Automationrule</em>}</li>
  * </ul>
  *
@@ -78,14 +78,14 @@ public class SmartHomeImpl extends MinimalEObjectImpl.Container implements Smart
 	protected String postalCode = POSTAL_CODE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRoom() <em>Room</em>}' reference list.
+	 * The cached value of the '{@link #getRooms() <em>Rooms</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRoom()
+	 * @see #getRooms()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Room> room;
+	protected EList<Room> rooms;
 
 	/**
 	 * The cached value of the '{@link #getAutomationrule() <em>Automationrule</em>}' reference list.
@@ -164,11 +164,11 @@ public class SmartHomeImpl extends MinimalEObjectImpl.Container implements Smart
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Room> getRoom() {
-		if (room == null) {
-			room = new EObjectResolvingEList<Room>(Room.class, this, HalPackage.SMART_HOME__ROOM);
+	public EList<Room> getRooms() {
+		if (rooms == null) {
+			rooms = new EObjectResolvingEList<Room>(Room.class, this, HalPackage.SMART_HOME__ROOMS);
 		}
-		return room;
+		return rooms;
 	}
 
 	/**
@@ -196,8 +196,8 @@ public class SmartHomeImpl extends MinimalEObjectImpl.Container implements Smart
 			return getAddress();
 		case HalPackage.SMART_HOME__POSTAL_CODE:
 			return getPostalCode();
-		case HalPackage.SMART_HOME__ROOM:
-			return getRoom();
+		case HalPackage.SMART_HOME__ROOMS:
+			return getRooms();
 		case HalPackage.SMART_HOME__AUTOMATIONRULE:
 			return getAutomationrule();
 		}
@@ -219,9 +219,9 @@ public class SmartHomeImpl extends MinimalEObjectImpl.Container implements Smart
 		case HalPackage.SMART_HOME__POSTAL_CODE:
 			setPostalCode((String) newValue);
 			return;
-		case HalPackage.SMART_HOME__ROOM:
-			getRoom().clear();
-			getRoom().addAll((Collection<? extends Room>) newValue);
+		case HalPackage.SMART_HOME__ROOMS:
+			getRooms().clear();
+			getRooms().addAll((Collection<? extends Room>) newValue);
 			return;
 		case HalPackage.SMART_HOME__AUTOMATIONRULE:
 			getAutomationrule().clear();
@@ -245,8 +245,8 @@ public class SmartHomeImpl extends MinimalEObjectImpl.Container implements Smart
 		case HalPackage.SMART_HOME__POSTAL_CODE:
 			setPostalCode(POSTAL_CODE_EDEFAULT);
 			return;
-		case HalPackage.SMART_HOME__ROOM:
-			getRoom().clear();
+		case HalPackage.SMART_HOME__ROOMS:
+			getRooms().clear();
 			return;
 		case HalPackage.SMART_HOME__AUTOMATIONRULE:
 			getAutomationrule().clear();
@@ -267,8 +267,8 @@ public class SmartHomeImpl extends MinimalEObjectImpl.Container implements Smart
 			return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
 		case HalPackage.SMART_HOME__POSTAL_CODE:
 			return POSTAL_CODE_EDEFAULT == null ? postalCode != null : !POSTAL_CODE_EDEFAULT.equals(postalCode);
-		case HalPackage.SMART_HOME__ROOM:
-			return room != null && !room.isEmpty();
+		case HalPackage.SMART_HOME__ROOMS:
+			return rooms != null && !rooms.isEmpty();
 		case HalPackage.SMART_HOME__AUTOMATIONRULE:
 			return automationrule != null && !automationrule.isEmpty();
 		}

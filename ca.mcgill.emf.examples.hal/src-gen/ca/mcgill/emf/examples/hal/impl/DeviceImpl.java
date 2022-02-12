@@ -3,24 +3,15 @@
 package ca.mcgill.emf.examples.hal.impl;
 
 import ca.mcgill.emf.examples.hal.Device;
-import ca.mcgill.emf.examples.hal.DeviceType;
 import ca.mcgill.emf.examples.hal.HalPackage;
 import ca.mcgill.emf.examples.hal.Room;
-
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +22,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.DeviceImpl#getName <em>Name</em>}</li>
- *   <li>{@link ca.mcgill.emf.examples.hal.impl.DeviceImpl#getDevicetype <em>Devicetype</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.DeviceImpl#getRoom <em>Room</em>}</li>
  * </ul>
  *
@@ -57,16 +47,6 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getDevicetype() <em>Devicetype</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDevicetype()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<DeviceType> devicetype;
 
 	/**
 	 * The cached value of the '{@link #getRoom() <em>Room</em>}' reference.
@@ -116,18 +96,6 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, HalPackage.DEVICE__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<DeviceType> getDevicetype() {
-		if (devicetype == null) {
-			devicetype = new EObjectResolvingEList<DeviceType>(DeviceType.class, this, HalPackage.DEVICE__DEVICETYPE);
-		}
-		return devicetype;
 	}
 
 	/**
@@ -199,6 +167,7 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -234,8 +203,6 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 		case HalPackage.DEVICE__NAME:
 			return getName();
-		case HalPackage.DEVICE__DEVICETYPE:
-			return getDevicetype();
 		case HalPackage.DEVICE__ROOM:
 			if (resolve)
 				return getRoom();
@@ -256,10 +223,6 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 		case HalPackage.DEVICE__NAME:
 			setName((String) newValue);
 			return;
-		case HalPackage.DEVICE__DEVICETYPE:
-			getDevicetype().clear();
-			getDevicetype().addAll((Collection<? extends DeviceType>) newValue);
-			return;
 		case HalPackage.DEVICE__ROOM:
 			setRoom((Room) newValue);
 			return;
@@ -278,9 +241,6 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 		case HalPackage.DEVICE__NAME:
 			setName(NAME_EDEFAULT);
 			return;
-		case HalPackage.DEVICE__DEVICETYPE:
-			getDevicetype().clear();
-			return;
 		case HalPackage.DEVICE__ROOM:
 			setRoom((Room) null);
 			return;
@@ -298,8 +258,6 @@ public abstract class DeviceImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 		case HalPackage.DEVICE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case HalPackage.DEVICE__DEVICETYPE:
-			return devicetype != null && !devicetype.isEmpty();
 		case HalPackage.DEVICE__ROOM:
 			return room != null;
 		}

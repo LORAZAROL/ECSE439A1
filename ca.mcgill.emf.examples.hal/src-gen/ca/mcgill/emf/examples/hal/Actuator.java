@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link ca.mcgill.emf.examples.hal.Actuator#getActuatoractivity <em>Actuatoractivity</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.Actuator#getControlcommand <em>Controlcommand</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.Actuator#isStatus <em>Status</em>}</li>
+ *   <li>{@link ca.mcgill.emf.examples.hal.Actuator#getActuatortype <em>Actuatortype</em>}</li>
  * </ul>
  *
  * @see ca.mcgill.emf.examples.hal.HalPackage#getActuator()
@@ -70,5 +71,19 @@ public interface Actuator extends Device {
 	 * @generated
 	 */
 	void setStatus(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Actuatortype</b></em>' reference list.
+	 * The list contents are of type {@link ca.mcgill.emf.examples.hal.ActuatorType}.
+	 * It is bidirectional and its opposite is '{@link ca.mcgill.emf.examples.hal.ActuatorType#getActuators <em>Actuators</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Actuatortype</em>' reference list.
+	 * @see ca.mcgill.emf.examples.hal.HalPackage#getActuator_Actuatortype()
+	 * @see ca.mcgill.emf.examples.hal.ActuatorType#getActuators
+	 * @model opposite="actuators"
+	 * @generated
+	 */
+	EList<ActuatorType> getActuatortype();
 
 } // Actuator
