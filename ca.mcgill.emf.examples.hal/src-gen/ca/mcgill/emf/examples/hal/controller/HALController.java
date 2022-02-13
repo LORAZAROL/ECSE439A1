@@ -70,7 +70,7 @@ public class HALController {
 	 * Update the name of a room
 	 * @param newRoomName
 	 */
-	public void setRoomName(String address, String oldRoomName, String newRoomName) {
+	public void updateRoomName(String address, String oldRoomName, String newRoomName) {
 		// get the room given its old name
 		Room room = getTargetRoom(address, oldRoomName);
 		if(room == null) {

@@ -16,7 +16,7 @@ public class HALApplication {
 
 		// Initialize HAL package and prepare resource helper
 		HalPackage.eINSTANCE.eClass();
-		ResourceHelper.INSTANCE.addResourceFactory("tournament", new HalResourceFactoryImpl());
+		ResourceHelper.INSTANCE.addResourceFactory("homeAutomationSystem", new HalResourceFactoryImpl());
 
 		// start UI
 		java.awt.EventQueue.invokeLater(new Runnable() {

@@ -1,135 +1,307 @@
 package ca.mcgill.emf.examples.hal.view;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
-import javax.swing.JFrame;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.GroupLayout;
+import javax.swing.InputMap;
 import javax.swing.JButton;
-import javax.swing.JTextPane;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.KeyStroke;
+import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
 
 import ca.mcgill.emf.examples.hal.controller.*;
 
-import javax.swing.JPanel;
-import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 public class HALView extends JFrame {
 
-	private JTextField txtHomeAutomationSystem;
-	private JTextField txtRooms;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField txtAddDeviceTo;
-	private JTextField txtDeleteDeviceOf;
-	private HALController HALController = new HALController();
-	private JComboBox deviceTypesComboBox;
+	private static final long serialVersionUID = -4426310869335015542L;
+	
+	// UI elements
+	private JLabel errorMessage = new JLabel();
+	// Room
+	private JComboBox<String> roomsList = new JComboBox<String>(new String[0]);
+	private JButton showRoomButton = new JButton();
+	private JButton deleteRoomButton = new JButton();
+	private JButton clearRoomButton = new JButton();
+	private JLabel RoomNameLabel = new JLabel();
+	private JLabel RoomNameText = new JLabel();
+	private JLabel newRoomNameLabel = new JLabel();
+	private JTextField newRoomNameTextField = new JTextField();
+	private JButton addRoomButton = new JButton();
+	private JButton updateRoomButton = new JButton();
+	// Room's teams
+	private JLabel removeTeamLabel = new JLabel();
+	private JTable teamsTable = new JTable();
+	private JScrollPane teamsScrollPane = new JScrollPane(teamsTable);
+	private JLabel newTeamNameLabel = new JLabel();
+	private JTextField newTeamNameTextField = new JTextField();
+	private JButton addTeamButton = new JButton();
+
+	// data elements
+	private String error = null;
+	// Room's teams
+	private DefaultTableModel teamsDtm;
+	private String teamsColumnNames[] = {"Team"};
+	private static final int HEIGHT_TEAMS_TABLE = 100;
 
 	public HALView() {
-		this.setSize(new Dimension(900, 600));
-		getContentPane().setLayout(null);
+		initComponents();
+		refreshData(null);
+	}
 
-		txtHomeAutomationSystem = new JTextField();
-		txtHomeAutomationSystem.setHorizontalAlignment(SwingConstants.CENTER);
-		txtHomeAutomationSystem.setText("Home Automation System");
-		txtHomeAutomationSystem.setBounds(330, 6, 192, 55);
-		getContentPane().add(txtHomeAutomationSystem);
-		txtHomeAutomationSystem.setColumns(10);
+	/** This method is called from within the constructor to initialize the form.
+	 */
+	@SuppressWarnings("serial")
+	private void initComponents() {
+		// elements for error message
+		errorMessage.setForeground(Color.RED);
+		
+		// elements for Room
+		initializeButton(showRoomButton, "Show", this::showRoomButtonActionPerformed);
+		initializeButton(deleteRoomButton, "Delete", this::deleteRoomButtonActionPerformed);
+		initializeButton(clearRoomButton, "Clear", this::clearRoomButtonActionPerformed);
+		RoomNameLabel.setText("Room Name:");
+		RoomNameText.setText("");
+		newRoomNameLabel.setText("New Room Name:");
+		initializeButton(addRoomButton, "Add", this::addRoomButtonActionPerformed);
+		initializeButton(updateRoomButton, "Update", this::updateRoomButtonActionPerformed);
+		
+		// elements for Room's teams
+		removeTeamLabel.setText("Select a row in the table and hit the delete key to remove a room");
+		this.add(teamsScrollPane);
+		Dimension d = teamsTable.getPreferredSize();
+		teamsScrollPane.setPreferredSize(new Dimension(d.width, HEIGHT_TEAMS_TABLE));
+		teamsScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		teamsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		// enable delete key in table to remove a row (team)
+		InputMap inputMap = teamsTable.getInputMap(JComponent.WHEN_FOCUSED);
+		ActionMap actionMap = teamsTable.getActionMap();
+		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "delete");
+//		actionMap.put("delete", new AbstractAction() {
+//			public void actionPerformed(ActionEvent deleteEvent) {
+//		    	teamsTableDeleteKeyActionPerformed(deleteEvent);
+//		    }
+//		});
+		newTeamNameLabel.setText("New Team Name:");
+//		initializeButton(addTeamButton, "Add Team", this::addTeamButtonActionPerformed);
 
-		txtRooms = new JTextField();
-		txtRooms.setHorizontalAlignment(SwingConstants.CENTER);
-		txtRooms.setText("Room");
-		txtRooms.setBounds(682, 6, 130, 26);
-		getContentPane().add(txtRooms);
-		txtRooms.setColumns(10);
+		// global settings and listeners
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setTitle("Home Automation System");
 
-		JLabel lblNewLabel = new JLabel("Room Name");
-		lblNewLabel.setBounds(593, 44, 91, 16);
-		getContentPane().add(lblNewLabel);
+		// horizontal line elements
+		JSeparator horizontalLine = new JSeparator();
 
-		textField = new JTextField();
-		textField.setBounds(682, 39, 130, 26);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		// layout
+		GroupLayout layout = new GroupLayout(getContentPane());
+		getContentPane().setLayout(layout);
+		layout.setAutoCreateGaps(true);
+		layout.setAutoCreateContainerGaps(true);
+		layout.setHorizontalGroup(
+				layout.createSequentialGroup()
+				.addGroup(layout.createParallelGroup()
+						.addComponent(errorMessage)
+						.addGroup(layout.createSequentialGroup()
+								.addComponent(roomsList, 200, 200, 400)
+								.addComponent(showRoomButton)
+								.addComponent(deleteRoomButton)
+								.addComponent(clearRoomButton))
+						.addComponent(horizontalLine)
+						.addGroup(layout.createSequentialGroup()
+								.addComponent(RoomNameLabel)
+								.addComponent(RoomNameText))
+						.addGroup(layout.createSequentialGroup()
+								.addComponent(newRoomNameLabel)
+								.addComponent(newRoomNameTextField, 200, 200, 400)
+								.addComponent(addRoomButton)
+								.addComponent(updateRoomButton))
+						.addComponent(removeTeamLabel)
+						.addComponent(teamsScrollPane)
+						.addGroup(layout.createSequentialGroup()
+								.addComponent(newTeamNameLabel)
+								.addComponent(newTeamNameTextField, 200, 200, 400)
+								.addComponent(addTeamButton)))
+				);
 
-		JButton btnNewButton = new JButton("Add Room");
-		btnNewButton.setBounds(682, 79, 117, 29);
-		getContentPane().add(btnNewButton);
+		layout.setVerticalGroup(
+				layout.createParallelGroup()
+				.addGroup(layout.createSequentialGroup()
+						.addComponent(errorMessage)
+						.addGroup(layout.createParallelGroup()
+								.addComponent(roomsList)
+								.addComponent(showRoomButton)
+								.addComponent(deleteRoomButton)
+								.addComponent(clearRoomButton))
+						.addComponent(horizontalLine)
+						.addGroup(layout.createParallelGroup()
+								.addComponent(RoomNameLabel)
+								.addComponent(RoomNameText))
+						.addGroup(layout.createParallelGroup()
+								.addComponent(newRoomNameLabel)
+								.addComponent(newRoomNameTextField)
+								.addComponent(addRoomButton)
+								.addComponent(updateRoomButton))
+						.addComponent(removeTeamLabel)
+						.addComponent(teamsScrollPane)
+						.addGroup(layout.createParallelGroup()
+								.addComponent(newTeamNameLabel)
+								.addComponent(newTeamNameTextField)
+								.addComponent(addTeamButton)))
+				);
+		
+		pack();
+	}
 
-		JLabel lblRooms = new JLabel("Rooms");
-		lblRooms.setBounds(580, 139, 91, 16);
-		getContentPane().add(lblRooms);
+	/** This method is called each time the page needs to be updated to the latest data.
+	 *  An empty page is shown if null is passed into the method.
+	 */
+	private void refreshData(String RoomName) {
+//		// error
+//		errorMessage.setText(error);
+//		if (error == null || error.length() == 0) {
+//			// retrieve the Room
+//			TORoom foundRoom = null;
+//			if (RoomName != null) {
+//				foundRoom = HALController.getRoom(RoomName);
+//			}
+//			// populate Room list
+//			roomsList.removeAllItems();
+//			int index = 0, foundIndex = -1;
+//			for (String rName : HALController.getRooms()) {
+//				roomsList.addItem(rName);
+//				if (rName.equals(foundRoom == null ? null : foundRoom.getName())) {
+//					foundIndex = index;
+//				}
+//				index++;
+//			};
+//			// enable Rooms list UI elements only if at least one Room exist
+//			roomsList.setEnabled(index > 0);
+//			roomsList.setSelectedIndex(foundIndex);
+//			showRoomButton.setEnabled(index > 0);
+//			deleteRoomButton.setEnabled(index > 0);
+//			// populate other UI elements depending on whether a Room was found or not
+//			if (foundIndex == -1) {
+//				foundRoom = null;
+//				// Room
+//				RoomNameText.setText("");
+//				newRoomNameTextField.setText("");
+//				// Room's teams
+//				//populateTeamsTable(null);
+//				newTeamNameTextField.setText("");
+//				// set allowed UI elements to enabled 
+//				clearRoomButton.setEnabled(false);
+//				addRoomButton.setEnabled(true);
+//				updateRoomButton.setEnabled(false);
+//				newTeamNameTextField.setEnabled(false);
+//				addTeamButton.setEnabled(false);
+//			} else {
+//				// Room
+//				RoomNameText.setText(foundRoom.getName());
+//				newRoomNameTextField.setText(foundRoom.getName());
+//				// Room's teams
+//				populateTeamsTable(foundRoom);
+//				newTeamNameTextField.setText("");
+//				// set allowed UI elements to enabled
+//				clearRoomButton.setEnabled(true);
+//				addRoomButton.setEnabled(false);
+//				updateRoomButton.setEnabled(true);
+//				newTeamNameTextField.setEnabled(true);
+//				addTeamButton.setEnabled(true);
+//			}
+//			Dimension d = teamsTable.getPreferredSize();
+//			teamsScrollPane.setPreferredSize(new Dimension(d.width, HEIGHT_TEAMS_TABLE));
+//		}
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(631, 135, 103, 27);
-		getContentPane().add(comboBox);
+		// this is needed because the size of the window changes depending on whether an error message is shown or not
+		pack();
+	}
 
-		JButton btnUpdateRoomName = new JButton("Update Room Name");
-		btnUpdateRoomName.setBounds(740, 175, 160, 29);
-		getContentPane().add(btnUpdateRoomName);
-
-		JButton btnDeleteRoom = new JButton("Delete Room");
-		btnDeleteRoom.setBounds(740, 134, 160, 29);
-		getContentPane().add(btnDeleteRoom);
-
-		textField_1 = new JTextField();
-		textField_1.setBounds(603, 174, 130, 26);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-
-		txtAddDeviceTo = new JTextField();
-		txtAddDeviceTo.setText("Add Device to Selected Room");
-		txtAddDeviceTo.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAddDeviceTo.setColumns(10);
-		txtAddDeviceTo.setBounds(593, 232, 307, 26);
-		getContentPane().add(txtAddDeviceTo);
-
-		JLabel lblDeviceType = new JLabel("Device Type");
-		lblDeviceType.setBounds(593, 279, 91, 16);
-		getContentPane().add(lblDeviceType);
-
-		JComboBox<String> deviceTypesComboBox = new JComboBox<String>();
-		deviceTypesComboBox.setBounds(682, 275, 212, 27);
-		getContentPane().add(deviceTypesComboBox);
-
-		JLabel lblDeviceName = new JLabel("Device Name");
-		lblDeviceName.setBounds(593, 327, 91, 16);
-		getContentPane().add(lblDeviceName);
-
-		JButton btnAddDevice = new JButton("Add Device");
-		btnAddDevice.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+	/** The following ...ActionPerformed methods first call the Controller and then refresh the page with the desired Room.
+	 */
+	
+	private void addRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		//error = HALController.addRoom(newRoomNameTextField.getText());
+		refreshData(newRoomNameTextField.getText());
+	}
+	
+	private void clearRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		error = null;
+		refreshData(null);
+	}
+	
+	private void deleteRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if (roomsList.getSelectedIndex() != -1) {
+			String roomName = (String) roomsList.getSelectedItem();
+	        int choice = JOptionPane.showConfirmDialog(null, "Do you want to delete Room " + roomName + "?", 
+	        		"Confirm Deletion",	JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+			if (choice == 0) { 
+				//error = HALController.deleteRoom(roomName);
+				refreshData(null);
 			}
-		});
-		btnAddDevice.setBounds(692, 322, 160, 29);
-		getContentPane().add(btnAddDevice);
+		}
+	}
+	
+	private void showRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		error = null;
+		refreshData((String) roomsList.getSelectedItem());
+	}
+	
+	private void updateRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		//error = HALController.updateRoomName(RoomNameText.getText(), newRoomNameTextField.getText());
+		refreshData(newRoomNameTextField.getText());
+	}
+//
+//	private void addTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {
+//		error = HALController.addTeam(RoomNameText.getText(), newTeamNameTextField.getText());
+//		refreshData(RoomNameText.getText());
+//	}
+	
+//	private void teamsTableDeleteKeyActionPerformed(java.awt.event.ActionEvent evt) {
+//		if (teamsTable.getSelectedRow() != -1) {
+//			String teamName = (String) teamsTable.getModel().getValueAt(teamsTable.getSelectedRow(), 0);
+//	        int choice = JOptionPane.showConfirmDialog(null, "Do you want to delete team " + teamName + "?", 
+//	        		"Confirm Deletion",	JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+//			if (choice == 0) { 
+//				error = HALController.removeTeam(teamName);
+//				refreshData(RoomNameText.getText());
+//			}
+//		}
+//	}
 
-		txtDeleteDeviceOf = new JTextField();
-		txtDeleteDeviceOf.setText("Delete Device of Selected Room");
-		txtDeleteDeviceOf.setHorizontalAlignment(SwingConstants.CENTER);
-		txtDeleteDeviceOf.setColumns(10);
-		txtDeleteDeviceOf.setBounds(593, 369, 307, 26);
-		getContentPane().add(txtDeleteDeviceOf);
-
-		JLabel lblListOfDevices = new JLabel("List of Devices");
-		lblListOfDevices.setBounds(593, 412, 123, 16);
-		getContentPane().add(lblListOfDevices);
-
-		JComboBox comboBox_1_1 = new JComboBox();
-		comboBox_1_1.setBounds(715, 408, 179, 27);
-		getContentPane().add(comboBox_1_1);
-
-		JButton btnDeleteDevice = new JButton("Delete Device");
-		btnDeleteDevice.setBounds(631, 450, 160, 29);
-		getContentPane().add(btnDeleteDevice);
+	/** The following methods are helper methods to simplify the methods.
+	 */
+	
+	private void initializeButton(JButton button, String text, ActionListener actionListener) {
+		button.setText(text);
+		button.addActionListener(actionListener);
 	}
 
-	public static void main(String[] args) {
-		HALView halView= new HALView();
-		halView.setVisible(true);
-	}
-
+//	private void populateTeamsTable(TORoom foundRoom) {
+//		teamsDtm = new DefaultTableModel(0, 0);
+//		teamsDtm.setColumnIdentifiers(teamsColumnNames);
+//		teamsTable.setModel(teamsDtm);
+//		if (foundRoom != null) {
+//			for (String teamName : foundRoom.getTeamNames()) {
+//				Object[] obj = {teamName};
+//				teamsDtm.addRow(obj);
+//			}
+//		}
+//	}
+	
 }
