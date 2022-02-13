@@ -324,22 +324,22 @@ public interface HalPackage extends EPackage {
 	int SMART_HOME__POSTAL_CODE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Rooms</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SMART_HOME__ROOMS = 2;
-
-	/**
 	 * The feature id for the '<em><b>Automationrule</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SMART_HOME__AUTOMATIONRULE = 3;
+	int SMART_HOME__AUTOMATIONRULE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Rooms</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMART_HOME__ROOMS = 3;
 
 	/**
 	 * The number of structural features of the '<em>Smart Home</em>' class.
@@ -1216,10 +1216,10 @@ public interface HalPackage extends EPackage {
 	EAttribute getSmartHome_PostalCode();
 
 	/**
-	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.SmartHome#getRooms <em>Rooms</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ca.mcgill.emf.examples.hal.SmartHome#getRooms <em>Rooms</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Rooms</em>'.
+	 * @return the meta object for the containment reference list '<em>Rooms</em>'.
 	 * @see ca.mcgill.emf.examples.hal.SmartHome#getRooms()
 	 * @see #getSmartHome()
 	 * @generated
@@ -1774,7 +1774,7 @@ public interface HalPackage extends EPackage {
 		EAttribute SMART_HOME__POSTAL_CODE = eINSTANCE.getSmartHome_PostalCode();
 
 		/**
-		 * The meta object literal for the '<em><b>Rooms</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Rooms</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

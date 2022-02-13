@@ -48,15 +48,15 @@ public class HALController {
 		
 		
 		// get the target smartRoom
-		SmartHome target = getTargetSmartHome(smartHomeAddress, homeAutomationSystem.getSmarthomes());
+		SmartHome targetSmartHome = getTargetSmartHome(smartHomeAddress, homeAutomationSystem.getSmarthomes());
 		
 		// create a room with given room name -- no constraint on uniqueness of room name
 		Room r = HalFactory.eINSTANCE.createRoom();
 		r.setName(roomName);
 		
 		// Add if target not null
-		if(target != null) {
-			target.getRooms().add(r);
+		if(targetSmartHome != null) {
+			targetSmartHome.getRooms().add(r);
 		}
         
 		HALApplication.save();

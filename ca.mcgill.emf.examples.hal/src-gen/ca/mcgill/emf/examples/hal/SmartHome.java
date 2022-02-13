@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link ca.mcgill.emf.examples.hal.SmartHome#getAddress <em>Address</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.SmartHome#getPostalCode <em>Postal Code</em>}</li>
- *   <li>{@link ca.mcgill.emf.examples.hal.SmartHome#getRooms <em>Rooms</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.SmartHome#getAutomationrule <em>Automationrule</em>}</li>
+ *   <li>{@link ca.mcgill.emf.examples.hal.SmartHome#getRooms <em>Rooms</em>}</li>
  * </ul>
  *
  * @see ca.mcgill.emf.examples.hal.HalPackage#getSmartHome()
@@ -71,13 +71,13 @@ public interface SmartHome extends EObject {
 	void setPostalCode(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Rooms</b></em>' reference list.
+	 * Returns the value of the '<em><b>Rooms</b></em>' containment reference list.
 	 * The list contents are of type {@link ca.mcgill.emf.examples.hal.Room}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rooms</em>' reference list.
+	 * @return the value of the '<em>Rooms</em>' containment reference list.
 	 * @see ca.mcgill.emf.examples.hal.HalPackage#getSmartHome_Rooms()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Room> getRooms();

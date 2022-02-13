@@ -37,8 +37,8 @@
     <genClasses ecoreClass="hal.ecore#//SmartHome">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hal.ecore#//SmartHome/address"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hal.ecore#//SmartHome/postalCode"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hal.ecore#//SmartHome/rooms"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hal.ecore#//SmartHome/automationrule"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hal.ecore#//SmartHome/rooms"/>
     </genClasses>
     <genClasses ecoreClass="hal.ecore#//Owner">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hal.ecore#//Owner/smarthome"/>

@@ -416,7 +416,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * @generated
 	 */
 	public EReference getSmartHome_Rooms() {
-		return (EReference) smartHomeEClass.getEStructuralFeatures().get(2);
+		return (EReference) smartHomeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -425,7 +425,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * @generated
 	 */
 	public EReference getSmartHome_Automationrule() {
-		return (EReference) smartHomeEClass.getEStructuralFeatures().get(3);
+		return (EReference) smartHomeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -785,8 +785,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		smartHomeEClass = createEClass(SMART_HOME);
 		createEAttribute(smartHomeEClass, SMART_HOME__ADDRESS);
 		createEAttribute(smartHomeEClass, SMART_HOME__POSTAL_CODE);
-		createEReference(smartHomeEClass, SMART_HOME__ROOMS);
 		createEReference(smartHomeEClass, SMART_HOME__AUTOMATIONRULE);
+		createEReference(smartHomeEClass, SMART_HOME__ROOMS);
 
 		ownerEClass = createEClass(OWNER);
 		createEReference(ownerEClass, OWNER__SMARTHOME);
@@ -929,12 +929,12 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSmartHome_PostalCode(), ecorePackage.getEString(), "postalCode", null, 0, 1, SmartHome.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSmartHome_Rooms(), this.getRoom(), null, "rooms", null, 0, -1, SmartHome.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
 		initEReference(getSmartHome_Automationrule(), this.getAutomationRule(), null, "automationrule", null, 0, -1,
 				SmartHome.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSmartHome_Rooms(), this.getRoom(), null, "rooms", null, 0, -1, SmartHome.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(ownerEClass, Owner.class, "Owner", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOwner_Smarthome(), this.getSmartHome(), null, "smarthome", null, 0, -1, Owner.class,
