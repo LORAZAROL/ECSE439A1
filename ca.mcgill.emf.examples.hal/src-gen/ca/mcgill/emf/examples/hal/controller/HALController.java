@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.eclipse.emf.common.util.EList;
 
+import ca.mcgill.emf.examples.hal.application.*;
+
 import ca.mcgill.emf.examples.hal.*;
 
 /**
@@ -17,7 +19,18 @@ public class HALController {
 	 * Add a new room to a smart home
 	 * @param name
 	 */
-	public void addRoom(String smartHomeAddress, String roomName) {
+	public String addRoom(String smartHomeAddress, String roomName) {
+		
+		HomeAutomationSystem halApplication = HALApplication.getHomeAutomationSystem();
+		
+		if (isStringValid(roomName)) {
+			return "Room name must be specified";
+		}
+//		if (existsRoom(roomName)) {
+//			return "Room with name " + roomName + " already exists for this Smart Home";
+//		}
+		
+		
 		// get the target smartRoom
 		SmartHome target = getTargetSmartHome(smartHomeAddress);
 		
@@ -29,6 +42,9 @@ public class HALController {
 		if(target != null) {
 			target.getRooms().add(r);
 		}
+        
+		HALApplication.save();
+		return null;
 	}
 	
 	/**
@@ -268,6 +284,10 @@ public class HALController {
 		}
 		
 		return devices;
+	}
+	
+	private static boolean isStringValid( String s) {
+		return s == null || s.length() == 0;
 	}
 	
 }

@@ -28,7 +28,7 @@ public class HALApplication {
 	}
 
 	public static HomeAutomationSystem getHomeAutomationSystem() {
-		// make sure that only one instance of Tournament exists
+		// make sure that only one instance of Home Automation System exists
 		if (homeAutomationSystem == null) {
 			homeAutomationSystem = load();
 		}
