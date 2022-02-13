@@ -15,7 +15,7 @@ import ca.mcgill.emf.examples.hal.*;
  */
 public class HALController {
 
-	public String addSmartHome(String smartHomeAddress) {
+	public static String addSmartHome(String smartHomeAddress) {
 		if (isStringValid(smartHomeAddress)) {
 			return "Smart Home address must be specified";
 		}
@@ -24,13 +24,14 @@ public class HALController {
 		SmartHome smartHome = HalFactory.eINSTANCE.createSmartHome();
 		smartHome.setAddress(smartHomeAddress);
 		homeAutomationSystem.getSmarthomes().add(smartHome);
+		HALApplication.save();
 		return null;
 	}
 	/**
 	 * Add a new room to a smart home
 	 * @param name
 	 */
-	public String addRoom(String smartHomeAddress, String roomName) {
+	public static String addRoom(String smartHomeAddress, String roomName) {
 		
 		HomeAutomationSystem homeAutomationSystem = HALApplication.getHomeAutomationSystem();
 		
@@ -71,7 +72,7 @@ public class HALController {
 	 * 
 	 * @param roomName
 	 */
-	public String getRoomDevices(String address, String roomName) {
+	public static String getRoomDevices(String address, String roomName) {
 		// get the target room
 		Room room = getTargetRoom(address, roomName);
 		// get the devices names and types of the room
@@ -101,7 +102,7 @@ public class HALController {
 	 * Update the name of a room
 	 * @param newRoomName
 	 */
-	public void updateRoomName(String address, String oldRoomName, String newRoomName) {
+	public static void updateRoomName(String address, String oldRoomName, String newRoomName) {
 		// get the room given its old name
 		Room room = getTargetRoom(address, oldRoomName);
 		if(room == null) {
@@ -116,7 +117,7 @@ public class HALController {
 	 * Delete the room of given name in given smart home
 	 * @param roomName
 	 */
-	public void deleteRoom(String smartHomeAddress, String roomName) {
+	public static void deleteRoom(String smartHomeAddress, String roomName) {
 		HomeAutomationSystem homeAutomationSystem = HALApplication.getHomeAutomationSystem();
 		// get the home at given address; later delete the room from it if exists a room
 		SmartHome home = getTargetSmartHome(smartHomeAddress, homeAutomationSystem.getSmarthomes());
@@ -136,7 +137,7 @@ public class HALController {
 	 * @param dType
 	 * @param isSensor
 	 */
-	public void addDeviceToRoom(String address, String roomName, String deviceName, DeviceType dType, boolean isSensor) {
+	public static void addDeviceToRoom(String address, String roomName, String deviceName, DeviceType dType, boolean isSensor) {
 		// todo: a boolean to claim sensor or actuator. Can a device be more than sensor or actuator?
 		// 1. two constants string "Sensor" "Actuator"
 		// 2. a public enumeration with value Sensor Actuator
@@ -163,7 +164,7 @@ public class HALController {
 	 * @param room
 	 * @param device
 	 */
-	public void deleteDeviceOfRoom(String address, String roomName, String deviceName) {
+	public static void deleteDeviceOfRoom(String address, String roomName, String deviceName) {
 		Room room = getTargetRoom(address, roomName);
 		Device targetDevice = getTargetDevice(deviceName);
 		
@@ -187,7 +188,7 @@ public class HALController {
 	 * @param address
 	 * @return
 	 */
-	private SmartHome getTargetSmartHome(String address, EList<SmartHome> smartHomeList) {
+	private static SmartHome getTargetSmartHome(String address, EList<SmartHome> smartHomeList) {
 		SmartHome target = null;
 		
 		// go through all homes to see if the given room exists
@@ -213,7 +214,7 @@ public class HALController {
 	 * @param roomName
 	 * @return
 	 */
-	private Room getTargetRoom(String address, String roomName) {
+	private static Room getTargetRoom(String address, String roomName) {
 		Room target = null;
 		
 		EList<Room> list = getRoomsOfSmartHome(address);
@@ -239,7 +240,7 @@ public class HALController {
 	 * @param deviceName
 	 * @return
 	 */
-	private Device getTargetDevice(String deviceName) {
+	private static Device getTargetDevice(String deviceName) {
 		Device target = null;
 		
 		ArrayList<Device> devices = getAllDevices();
@@ -258,8 +259,9 @@ public class HALController {
 	 * Get all smartHome objects in current EInstance
 	 * @return
 	 */
-	private EList<SmartHome> getAllSmartHomes(){
-		EList<SmartHome> list = HalFactory.eINSTANCE.createHomeAutomationSystem().getSmarthomes();
+	public static EList<SmartHome> getAllSmartHomes(){
+		HomeAutomationSystem homeAutomationSystem = HALApplication.getHomeAutomationSystem();
+		EList<SmartHome> list = homeAutomationSystem.getSmarthomes();
 		return list;
 	}
 	
@@ -267,7 +269,7 @@ public class HALController {
 	 * Get all room objects of given address
 	 * @return
 	 */
-	private EList<Room> getRoomsOfSmartHome(String address){
+	private static EList<Room> getRoomsOfSmartHome(String address){
 		HomeAutomationSystem homeAutomationSystem = HALApplication.getHomeAutomationSystem();
 		// get all smart homes and add their rooms into rooms list
 		SmartHome home = getTargetSmartHome(address, homeAutomationSystem.getSmarthomes());
@@ -280,7 +282,7 @@ public class HALController {
 	 * Get all device objects in current EInstance
 	 * @return
 	 */
-	private ArrayList<Device> getAllDevices(){
+	private static ArrayList<Device> getAllDevices(){
 		// a container to store all devices (using ArrayList as it can be iterated)
 		// also EList cannot be instantiated
 		ArrayList<Device> devices = new ArrayList<Device>();

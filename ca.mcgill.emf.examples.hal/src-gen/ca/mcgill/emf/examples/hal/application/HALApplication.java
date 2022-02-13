@@ -45,7 +45,7 @@ public class HALApplication {
 			Resource resource = ResourceHelper.INSTANCE.loadResource(filename);
 			homeAutomationSystem = (HomeAutomationSystem) resource.getContents().get(0);
 		} catch (RuntimeException e) {
-			// model cannot be loaded - create an empty Tournament
+			// model cannot be loaded - create an empty Home Automation System
 			homeAutomationSystem = HalFactory.eINSTANCE.createHomeAutomationSystem();
 		}
 		return homeAutomationSystem;

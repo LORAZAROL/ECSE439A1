@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<hal:HomeAutomationSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hal="http://www.example.org/hal">
+  <smarthomes address="test123"/>
+</hal:HomeAutomationSystem>

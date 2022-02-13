@@ -70,7 +70,7 @@ public class HomeAutomationSystemItemProvider extends ItemProviderAdapter implem
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(HalPackage.Literals.HOME_AUTOMATION_SYSTEM__SMARTHOME);
+			childrenFeatures.add(HalPackage.Literals.HOME_AUTOMATION_SYSTEM__SMARTHOMES);
 			childrenFeatures.add(HalPackage.Literals.HOME_AUTOMATION_SYSTEM__ACTIVITY);
 		}
 		return childrenFeatures;
@@ -133,7 +133,7 @@ public class HomeAutomationSystemItemProvider extends ItemProviderAdapter implem
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HomeAutomationSystem.class)) {
-		case HalPackage.HOME_AUTOMATION_SYSTEM__SMARTHOME:
+		case HalPackage.HOME_AUTOMATION_SYSTEM__SMARTHOMES:
 		case HalPackage.HOME_AUTOMATION_SYSTEM__ACTIVITY:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -152,7 +152,7 @@ public class HomeAutomationSystemItemProvider extends ItemProviderAdapter implem
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(HalPackage.Literals.HOME_AUTOMATION_SYSTEM__SMARTHOME,
+		newChildDescriptors.add(createChildParameter(HalPackage.Literals.HOME_AUTOMATION_SYSTEM__SMARTHOMES,
 				HalFactory.eINSTANCE.createSmartHome()));
 
 		newChildDescriptors.add(createChildParameter(HalPackage.Literals.HOME_AUTOMATION_SYSTEM__ACTIVITY,
