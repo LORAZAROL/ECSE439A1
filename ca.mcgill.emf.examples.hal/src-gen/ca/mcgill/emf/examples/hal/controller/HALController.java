@@ -101,16 +101,19 @@ public class HALController {
 	/**
 	 * Update the name of a room
 	 * @param newRoomName
+	 * @return 
 	 */
-	public static void updateRoomName(String address, String oldRoomName, String newRoomName) {
+	public static String updateRoomName(String address, String oldRoomName, String newRoomName) {
 		// get the room given its old name
 		Room room = getTargetRoom(address, oldRoomName);
 		if(room == null) {
 			// todo: report an error not found in view
-			return;
+			return "Room not found";
 		}
 		// set the new name
 		room.setName(newRoomName);
+		HALApplication.save();
+		return null;
 	}
 	
 	/**
@@ -224,6 +227,7 @@ public class HALController {
 			Room cur = list.get(i);
 			if(cur.getName().equals(roomName)) {
 				target = cur;
+				break;
 			}
 		}
 		
@@ -269,7 +273,7 @@ public class HALController {
 	 * Get all room objects of given address
 	 * @return
 	 */
-	private static EList<Room> getRoomsOfSmartHome(String address){
+	public static EList<Room> getRoomsOfSmartHome(String address){
 		HomeAutomationSystem homeAutomationSystem = HALApplication.getHomeAutomationSystem();
 		// get all smart homes and add their rooms into rooms list
 		SmartHome home = getTargetSmartHome(address, homeAutomationSystem.getSmarthomes());

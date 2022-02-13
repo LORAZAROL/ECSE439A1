@@ -26,6 +26,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
+import ca.mcgill.emf.examples.hal.Room;
 import ca.mcgill.emf.examples.hal.SmartHome;
 import ca.mcgill.emf.examples.hal.controller.*;
 
@@ -200,15 +201,32 @@ public class HALView extends JFrame {
 	/** This method is called each time the page needs to be updated to the latest data.
 	 *  An empty page is shown if null is passed into the method.
 	 */
-	private void refreshSmartHomeData() {
+	private void refreshSmartHomesList() {
 		// error
 		errorMessage.setText(error);
 		if (error == null || error.length() == 0) {
 			// populate group list
 			smartHomesList.removeAllItems();
-			int index = 0, foundIndex = -1;
 			for (SmartHome smartHomeAddr : HALController.getAllSmartHomes()) {
 				smartHomesList.addItem(smartHomeAddr.getAddress());
+			};
+		}
+
+		// this is needed because the size of the window changes depending on whether an error message is shown or not
+		pack();
+	}
+	
+	/** This method is called each time the page needs to be updated to the latest data.
+	 *  An empty page is shown if null is passed into the method.
+	 */
+	private void refreshRoomsList(String smartHomeAddress) {
+		// error
+		errorMessage.setText(error);
+		if (error == null || error.length() == 0) {
+			// populate group list
+			roomsList.removeAllItems();
+			for (Room room : HALController.getRoomsOfSmartHome(smartHomeAddress)) {
+				roomsList.addItem(room.getName());
 			};
 		}
 
@@ -285,12 +303,15 @@ public class HALView extends JFrame {
 	
 	private void addSmartHomeButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		error = HALController.addSmartHome(newSmartHomeAddressTextField.getText());
+		newSmartHomeAddressTextField.setText("");
+		refreshSmartHomesList();
 	}
 	
 	
 	private void addRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		//error = HALController.addRoom(newRoomNameTextField.getText());
-		refreshData(newRoomNameTextField.getText());
+		error = HALController.addRoom(String.valueOf(smartHomesList.getSelectedItem()), newRoomNameTextField.getText());
+		newRoomNameTextField.setText("");
+		refreshRoomsList(String.valueOf(smartHomesList.getSelectedItem()));
 	}
 	
 	private void clearRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -312,17 +333,18 @@ public class HALView extends JFrame {
 	
 	private void showRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		error = null;
-		refreshData((String) roomsList.getSelectedItem());
+		refreshRoomsList(String.valueOf(smartHomesList.getSelectedItem()));
 	}
 	
 	private void showSmartHomesButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		error = null;
-		refreshSmartHomeData();
+		refreshSmartHomesList();
 	}
 	
 	private void updateRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		//error = HALController.updateRoomName(RoomNameText.getText(), newRoomNameTextField.getText());
-		refreshData(newRoomNameTextField.getText());
+		error = HALController.updateRoomName(String.valueOf(smartHomesList.getSelectedItem()), String.valueOf(roomsList.getSelectedItem()), newRoomNameTextField.getText());
+		newRoomNameTextField.setText("");
+		refreshRoomsList(String.valueOf(smartHomesList.getSelectedItem()));
 	}
 //
 //	private void addTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {
