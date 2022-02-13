@@ -44,7 +44,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hal.ecore#//Owner/smarthome"/>
     </genClasses>
     <genClasses ecoreClass="hal.ecore#//HomeAutomationSystem">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hal.ecore#//HomeAutomationSystem/smarthome"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hal.ecore#//HomeAutomationSystem/smarthomes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hal.ecore#//HomeAutomationSystem/activity"/>
     </genClasses>
     <genClasses ecoreClass="hal.ecore#//AutomationRule">

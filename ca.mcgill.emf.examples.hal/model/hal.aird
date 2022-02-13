@@ -5,7 +5,7 @@
     <semanticResources>hal.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_xOKlYIs4EeyZeM0WGodeyQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xPGZgIs4EeyZeM0WGodeyQ" name="hal" repPath="#_xOriwIs4EeyZeM0WGodeyQ" changeId="a2e6514e-d43b-490c-b5ed-c2f24a6e5ff3">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xPGZgIs4EeyZeM0WGodeyQ" name="hal" repPath="#_xOriwIs4EeyZeM0WGodeyQ" changeId="2fcb8d2d-86b2-49b8-ae9f-75722ee21a66">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="hal.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -876,9 +876,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_iHM7cos6EeyZeM0WGodeyQ" name="[0..*] smarthome" sourceNode="_cwxpQIs6EeyZeM0WGodeyQ" targetNode="_LI3XYIs6EeyZeM0WGodeyQ">
-      <target xmi:type="ecore:EReference" href="hal.ecore#//HomeAutomationSystem/smarthome"/>
-      <semanticElements xmi:type="ecore:EReference" href="hal.ecore#//HomeAutomationSystem/smarthome"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_iHM7cos6EeyZeM0WGodeyQ" name="[0..*] smarthomes" sourceNode="_cwxpQIs6EeyZeM0WGodeyQ" targetNode="_LI3XYIs6EeyZeM0WGodeyQ">
+      <target xmi:type="ecore:EReference" href="hal.ecore#//HomeAutomationSystem/smarthomes"/>
+      <semanticElements xmi:type="ecore:EReference" href="hal.ecore#//HomeAutomationSystem/smarthomes"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_iHNic4s6EeyZeM0WGodeyQ" description="_iHNicIs6EeyZeM0WGodeyQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_iHNidYs6EeyZeM0WGodeyQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>

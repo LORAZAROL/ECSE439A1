@@ -460,7 +460,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHomeAutomationSystem_Smarthome() {
+	public EReference getHomeAutomationSystem_Smarthomes() {
 		return (EReference) homeAutomationSystemEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -792,7 +792,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		createEReference(ownerEClass, OWNER__SMARTHOME);
 
 		homeAutomationSystemEClass = createEClass(HOME_AUTOMATION_SYSTEM);
-		createEReference(homeAutomationSystemEClass, HOME_AUTOMATION_SYSTEM__SMARTHOME);
+		createEReference(homeAutomationSystemEClass, HOME_AUTOMATION_SYSTEM__SMARTHOMES);
 		createEReference(homeAutomationSystemEClass, HOME_AUTOMATION_SYSTEM__ACTIVITY);
 
 		automationRuleEClass = createEClass(AUTOMATION_RULE);
@@ -943,7 +943,7 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 
 		initEClass(homeAutomationSystemEClass, HomeAutomationSystem.class, "HomeAutomationSystem", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHomeAutomationSystem_Smarthome(), this.getSmartHome(), null, "smarthome", null, 0, -1,
+		initEReference(getHomeAutomationSystem_Smarthomes(), this.getSmartHome(), null, "smarthomes", null, 0, -1,
 				HomeAutomationSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHomeAutomationSystem_Activity(), this.getActivity(), null, "activity", null, 0, -1,

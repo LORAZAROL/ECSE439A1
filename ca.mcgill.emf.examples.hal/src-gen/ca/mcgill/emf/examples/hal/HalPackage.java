@@ -407,13 +407,13 @@ public interface HalPackage extends EPackage {
 	int HOME_AUTOMATION_SYSTEM = 6;
 
 	/**
-	 * The feature id for the '<em><b>Smarthome</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Smarthomes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HOME_AUTOMATION_SYSTEM__SMARTHOME = 0;
+	int HOME_AUTOMATION_SYSTEM__SMARTHOMES = 0;
 
 	/**
 	 * The feature id for the '<em><b>Activity</b></em>' containment reference list.
@@ -1269,15 +1269,15 @@ public interface HalPackage extends EPackage {
 	EClass getHomeAutomationSystem();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ca.mcgill.emf.examples.hal.HomeAutomationSystem#getSmarthome <em>Smarthome</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ca.mcgill.emf.examples.hal.HomeAutomationSystem#getSmarthomes <em>Smarthomes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Smarthome</em>'.
-	 * @see ca.mcgill.emf.examples.hal.HomeAutomationSystem#getSmarthome()
+	 * @return the meta object for the containment reference list '<em>Smarthomes</em>'.
+	 * @see ca.mcgill.emf.examples.hal.HomeAutomationSystem#getSmarthomes()
 	 * @see #getHomeAutomationSystem()
 	 * @generated
 	 */
-	EReference getHomeAutomationSystem_Smarthome();
+	EReference getHomeAutomationSystem_Smarthomes();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link ca.mcgill.emf.examples.hal.HomeAutomationSystem#getActivity <em>Activity</em>}'.
@@ -1818,12 +1818,12 @@ public interface HalPackage extends EPackage {
 		EClass HOME_AUTOMATION_SYSTEM = eINSTANCE.getHomeAutomationSystem();
 
 		/**
-		 * The meta object literal for the '<em><b>Smarthome</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Smarthomes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference HOME_AUTOMATION_SYSTEM__SMARTHOME = eINSTANCE.getHomeAutomationSystem_Smarthome();
+		EReference HOME_AUTOMATION_SYSTEM__SMARTHOMES = eINSTANCE.getHomeAutomationSystem_Smarthomes();
 
 		/**
 		 * The meta object literal for the '<em><b>Activity</b></em>' containment reference list feature.

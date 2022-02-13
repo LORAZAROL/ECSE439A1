@@ -15,16 +15,31 @@ import ca.mcgill.emf.examples.hal.*;
  */
 public class HALController {
 
+	public String addSmartHome(String smartHomeAddress) {
+		if (isStringValid(smartHomeAddress)) {
+			return "Smart Home address must be specified";
+		}
+		
+		HomeAutomationSystem homeAutomationSystem = HALApplication.getHomeAutomationSystem();
+		SmartHome smartHome = HalFactory.eINSTANCE.createSmartHome();
+		smartHome.setAddress(smartHomeAddress);
+		homeAutomationSystem.getSmarthomes().add(smartHome);
+		return null;
+	}
 	/**
 	 * Add a new room to a smart home
 	 * @param name
 	 */
 	public String addRoom(String smartHomeAddress, String roomName) {
 		
-		HomeAutomationSystem halApplication = HALApplication.getHomeAutomationSystem();
+		HomeAutomationSystem homeAutomationSystem = HALApplication.getHomeAutomationSystem();
 		
 		if (isStringValid(roomName)) {
 			return "Room name must be specified";
+		}
+		
+		if (isStringValid(smartHomeAddress)) {
+			return "Smart Home address must be specified";
 		}
 //		if (existsRoom(roomName)) {
 //			return "Room with name " + roomName + " already exists for this Smart Home";
@@ -32,7 +47,7 @@ public class HALController {
 		
 		
 		// get the target smartRoom
-		SmartHome target = getTargetSmartHome(smartHomeAddress);
+		SmartHome target = getTargetSmartHome(smartHomeAddress, homeAutomationSystem.getSmarthomes());
 		
 		// create a room with given room name -- no constraint on uniqueness of room name
 		Room r = HalFactory.eINSTANCE.createRoom();
@@ -102,8 +117,9 @@ public class HALController {
 	 * @param roomName
 	 */
 	public void deleteRoom(String smartHomeAddress, String roomName) {
+		HomeAutomationSystem homeAutomationSystem = HALApplication.getHomeAutomationSystem();
 		// get the home at given address; later delete the room from it if exists a room
-		SmartHome home = getTargetSmartHome(smartHomeAddress);
+		SmartHome home = getTargetSmartHome(smartHomeAddress, homeAutomationSystem.getSmarthomes());
 		// get the target room to be deleted
 		Room room = getTargetRoom(smartHomeAddress, roomName);
 		if(room != null) {
@@ -171,14 +187,12 @@ public class HALController {
 	 * @param address
 	 * @return
 	 */
-	private SmartHome getTargetSmartHome(String address) {
+	private SmartHome getTargetSmartHome(String address, EList<SmartHome> smartHomeList) {
 		SmartHome target = null;
 		
-		EList<SmartHome> list = getAllSmartHomes();
-		
 		// go through all homes to see if the given room exists
-		for(int i = 0; i < list.size(); i++) {
-			SmartHome cur = list.get(i);
+		for(int i = 0; i < smartHomeList.size(); i++) {
+			SmartHome cur = smartHomeList.get(i);
 			if(cur.getAddress().equals(address)) {
 				target = cur; 
 				break;
@@ -245,7 +259,7 @@ public class HALController {
 	 * @return
 	 */
 	private EList<SmartHome> getAllSmartHomes(){
-		EList<SmartHome> list = HalFactory.eINSTANCE.createHomeAutomationSystem().getSmarthome();
+		EList<SmartHome> list = HalFactory.eINSTANCE.createHomeAutomationSystem().getSmarthomes();
 		return list;
 	}
 	
@@ -254,8 +268,9 @@ public class HALController {
 	 * @return
 	 */
 	private EList<Room> getRoomsOfSmartHome(String address){
+		HomeAutomationSystem homeAutomationSystem = HALApplication.getHomeAutomationSystem();
 		// get all smart homes and add their rooms into rooms list
-		SmartHome home = getTargetSmartHome(address);
+		SmartHome home = getTargetSmartHome(address, homeAutomationSystem.getSmarthomes());
 		EList<Room> rooms = home.getRooms();
 		
 		return rooms;

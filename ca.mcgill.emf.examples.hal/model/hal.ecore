@@ -41,7 +41,7 @@
         eType="#//SmartHome"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HomeAutomationSystem">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="smarthome" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="smarthomes" upperBound="-1"
         eType="#//SmartHome" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activity" upperBound="-1"
         eType="#//Activity" containment="true"/>

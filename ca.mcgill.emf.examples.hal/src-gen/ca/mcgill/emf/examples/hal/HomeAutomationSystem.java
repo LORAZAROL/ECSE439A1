@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ca.mcgill.emf.examples.hal.HomeAutomationSystem#getSmarthome <em>Smarthome</em>}</li>
+ *   <li>{@link ca.mcgill.emf.examples.hal.HomeAutomationSystem#getSmarthomes <em>Smarthomes</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.HomeAutomationSystem#getActivity <em>Activity</em>}</li>
  * </ul>
  *
@@ -25,16 +25,16 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface HomeAutomationSystem extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Smarthome</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Smarthomes</b></em>' containment reference list.
 	 * The list contents are of type {@link ca.mcgill.emf.examples.hal.SmartHome}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Smarthome</em>' containment reference list.
-	 * @see ca.mcgill.emf.examples.hal.HalPackage#getHomeAutomationSystem_Smarthome()
+	 * @return the value of the '<em>Smarthomes</em>' containment reference list.
+	 * @see ca.mcgill.emf.examples.hal.HalPackage#getHomeAutomationSystem_Smarthomes()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<SmartHome> getSmarthome();
+	EList<SmartHome> getSmarthomes();
 
 	/**
 	 * Returns the value of the '<em><b>Activity</b></em>' containment reference list.
