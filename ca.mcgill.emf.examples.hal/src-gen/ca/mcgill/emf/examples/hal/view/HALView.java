@@ -1,32 +1,19 @@
 package ca.mcgill.emf.examples.hal.view;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
 import javax.swing.GroupLayout;
-import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.KeyStroke;
-import javax.swing.ListSelectionModel;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.WindowConstants;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
@@ -63,7 +50,7 @@ public class HALView extends JFrame {
 	private JButton addDeviceButton = new JButton();
 	private JButton removeDeviceButton = new JButton();
 	public ButtonGroup deviceButtonGroup = new ButtonGroup();
-	private JRadioButton actuatorDeviceRadioButton = new JRadioButton("Actuator");
+	private JRadioButton actuatorDeviceRadioButton = new JRadioButton("Actuator",true);
 	private JRadioButton sensorDeviceRadioButton = new JRadioButton("Sensor");
 	private JLabel deviceTypeLabel = new JLabel();
 	private JComboBox<String> devicesList = new JComboBox<String>(new String[0]);
