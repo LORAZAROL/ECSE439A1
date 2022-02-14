@@ -47,7 +47,7 @@ public class HALView extends JFrame {
 	private JTextField newSmartHomeAddressTextField = new JTextField();
 	private JButton addSmartHomeButton = new JButton();
 	private JButton showRoomButton = new JButton();
-	private JButton showSmartHomesButton = new JButton();
+	private JButton showSmartHomeRoomsButton = new JButton();
 	private JButton deleteRoomButton = new JButton();
 	private JButton clearRoomButton = new JButton();
 	private JLabel roomNameLabel = new JLabel();
@@ -87,7 +87,7 @@ public class HALView extends JFrame {
 		errorMessage.setForeground(Color.RED);
 		
 		// Elements for a SmartHome
-		initializeButton(showSmartHomesButton, "Show SmartHomes", this::showSmartHomesButtonActionPerformed);
+		initializeButton(showSmartHomeRoomsButton, "Show Rooms of SmartHome", this::showSmartHomeRoomsButtonActionPerformed);
 		newSmartHomeAddressLabel.setText("New SmartHome Address:");
 		newSmartHomeAddressTextField.setText("");
 		initializeButton(addSmartHomeButton, "Add SmartHome", this::addSmartHomeButtonActionPerformed);
@@ -105,7 +105,7 @@ public class HALView extends JFrame {
 		
 		
 		// elements for Room's devices
-		removeDevicesLabel.setText("Select a room's device and hit the delete key to remove the selected room's sensor or actuator");
+		removeDevicesLabel.setText("Select a room's device and hit the remove button to delete the selected room's sensor or actuator");
 		
 		
 		newDeviceLabel.setText("New Device Name:");
@@ -113,6 +113,7 @@ public class HALView extends JFrame {
 		deviceButtonGroup.add(actuatorDeviceRadioButton);
 		deviceButtonGroup.add(sensorDeviceRadioButton);
 		deviceTypeLabel.setText("Device Type:");
+		initializeButton(removeDeviceButton, "Remove Selected Device", this::deleteDeviceButtonActionPerformed);
 
 		// global settings and listeners
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -120,6 +121,8 @@ public class HALView extends JFrame {
 		
 		// Programatically add device types to the Home Automation System
 		initializeDeviceTypesList(listOfDeviceTypes);
+		
+		refreshSmartHomesList();
 
 		// horizontal line elements
 		JSeparator horizontalLine = new JSeparator();
@@ -138,7 +141,7 @@ public class HALView extends JFrame {
 								.addComponent(newSmartHomeAddressTextField)
 								.addComponent(addSmartHomeButton)						
 								.addComponent(smartHomesList, 200, 200, 200)
-								.addComponent(showSmartHomesButton)
+								.addComponent(showSmartHomeRoomsButton)
 						.addComponent(horizontalLine)
 						.addGroup(layout.createSequentialGroup()
 								.addComponent(roomNameText))
@@ -177,7 +180,7 @@ public class HALView extends JFrame {
 								.addComponent(newSmartHomeAddressTextField)
 								.addComponent(addSmartHomeButton)
 								.addComponent(smartHomesList)
-								.addComponent(showSmartHomesButton)
+								.addComponent(showSmartHomeRoomsButton)
 						.addComponent(horizontalLine)
 						.addGroup(layout.createParallelGroup()
 								.addComponent(roomNameText))
@@ -292,6 +295,20 @@ public class HALView extends JFrame {
 			if (choice == 0) { 
 				error = HALController.deleteRoom(String.valueOf(smartHomesList.getSelectedItem()),roomName);
 				refreshRoomsList(String.valueOf(smartHomesList.getSelectedItem()));
+				refreshDevicesList();
+			}
+		}
+	}
+	
+	private void deleteDeviceButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if (devicesList.getSelectedIndex() != -1) {
+			String deviceInfo = (String) devicesList.getSelectedItem();
+	        int choice = JOptionPane.showConfirmDialog(null, "Do you want to delete" + deviceInfo + "?", 
+	        		"Confirm Deletion",	JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+			if (choice == 0) { 
+				//error = HALController.deleteDeviceOfRoom(String.valueOf(smartHomesList.getSelectedItem()),roomsList.getSelectedItem());
+				refreshRoomsList(String.valueOf(smartHomesList.getSelectedItem()));
+				refreshDevicesList();
 			}
 		}
 	}
@@ -301,15 +318,16 @@ public class HALView extends JFrame {
 		refreshRoomsList(String.valueOf(smartHomesList.getSelectedItem()));
 	}
 	
-	private void showSmartHomesButtonActionPerformed(java.awt.event.ActionEvent evt) {
+	private void showSmartHomeRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		error = null;
-		refreshSmartHomesList();
+		refreshRoomsList(String.valueOf(smartHomesList.getSelectedItem()));
 	}
 	
 	private void updateRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		error = HALController.updateRoomName(String.valueOf(smartHomesList.getSelectedItem()), String.valueOf(roomsList.getSelectedItem()), newRoomNameTextField.getText());
 		newRoomNameTextField.setText("");
 		refreshRoomsList(String.valueOf(smartHomesList.getSelectedItem()));
+		refreshDevicesList();
 	}
 
 	private void addDeviceButtonActionPerformed(java.awt.event.ActionEvent evt) {

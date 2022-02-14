@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
 <hal:HomeAutomationSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hal="http://www.example.org/hal">
-  <smarthomes address="teste">
-    <rooms name="test" devices="test test2 test23"/>
+  <smarthomes address="yrdy">
+    <rooms name="r" devices="3"/>
+    <rooms name="3"/>
+  </smarthomes>
+  <smarthomes address="yr"/>
+  <smarthomes address="test">
+    <rooms name="3"/>
   </smarthomes>
 </hal:HomeAutomationSystem>
