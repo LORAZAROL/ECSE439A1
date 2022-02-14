@@ -107,7 +107,6 @@ public class HALController {
 		// get the room given its old name
 		Room room = getTargetRoom(address, oldRoomName);
 		if(room == null) {
-			// todo: report an error not found in view
 			return "Room not found";
 		}
 		// set the new name
@@ -119,17 +118,21 @@ public class HALController {
 	/**
 	 * Delete the room of given name in given smart home
 	 * @param roomName
+	 * @return 
 	 */
-	public static void deleteRoom(String smartHomeAddress, String roomName) {
+	public static String deleteRoom(String smartHomeAddress, String roomName) {
 		HomeAutomationSystem homeAutomationSystem = HALApplication.getHomeAutomationSystem();
 		// get the home at given address; later delete the room from it if exists a room
 		SmartHome home = getTargetSmartHome(smartHomeAddress, homeAutomationSystem.getSmarthomes());
 		// get the target room to be deleted
 		Room room = getTargetRoom(smartHomeAddress, roomName);
-		if(room != null) {
-			home.getRooms().remove(room);
+		if(room == null) {
+			return "Unable to delete Room";
 		}
 		
+		home.getRooms().remove(room);
+		HALApplication.save();
+		return null;
 		// todo: report error when not exist?
 	}
 	
@@ -140,26 +143,33 @@ public class HALController {
 	 * @param dType
 	 * @param isSensor
 	 */
-	public static void addDeviceToRoom(String address, String roomName, String deviceName, DeviceType dType, boolean isSensor) {
+	public static String addDeviceToRoom(String address, String roomName, String deviceName, String deviceType, boolean isSensor) {
 		// todo: a boolean to claim sensor or actuator. Can a device be more than sensor or actuator?
 		// 1. two constants string "Sensor" "Actuator"
 		// 2. a public enumeration with value Sensor Actuator
 		
 		// Create a device with given category
 		Device device = null;
+		DeviceType deviceT = null;
 		if(isSensor) {
 			device = HalFactory.eINSTANCE.createSensor();
+			deviceT = HalFactory.eINSTANCE.createSensorType();
+			deviceT.setDeviceType(deviceType);
 		}else {
 			device = HalFactory.eINSTANCE.createActuator();
+			deviceT = HalFactory.eINSTANCE.createActuatorType();
+			deviceT.setDeviceType(deviceType);
 		}
 		
 		if(device != null) {
 			device.setName(deviceName); //todo: didn't check the uniqueness of name (already check the property to be ID)
-			device.getDevicetypes().add(dType);
+			device.getDevicetypes().add(deviceT);
 			Room room = getTargetRoom(address, roomName);
 			room.getDevices().add(device);
 		}
 		
+		HALApplication.save();
+		return null;
 	}
 	
 	/**

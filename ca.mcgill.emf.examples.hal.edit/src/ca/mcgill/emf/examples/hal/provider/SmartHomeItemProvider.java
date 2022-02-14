@@ -2,6 +2,7 @@
  */
 package ca.mcgill.emf.examples.hal.provider;
 
+import ca.mcgill.emf.examples.hal.HalFactory;
 import ca.mcgill.emf.examples.hal.HalPackage;
 import ca.mcgill.emf.examples.hal.SmartHome;
 
@@ -13,6 +14,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -55,7 +57,6 @@ public class SmartHomeItemProvider extends ItemProviderAdapter implements IEditi
 
 			addAddressPropertyDescriptor(object);
 			addPostalCodePropertyDescriptor(object);
-			addRoomsPropertyDescriptor(object);
 			addAutomationrulePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -94,21 +95,6 @@ public class SmartHomeItemProvider extends ItemProviderAdapter implements IEditi
 	}
 
 	/**
-	 * This adds a property descriptor for the Rooms feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRoomsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_SmartHome_rooms_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_SmartHome_rooms_feature",
-								"_UI_SmartHome_type"),
-						HalPackage.Literals.SMART_HOME__ROOMS, true, false, true, null, null, null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Automationrule feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -121,6 +107,36 @@ public class SmartHomeItemProvider extends ItemProviderAdapter implements IEditi
 						getString("_UI_PropertyDescriptor_description", "_UI_SmartHome_automationrule_feature",
 								"_UI_SmartHome_type"),
 						HalPackage.Literals.SMART_HOME__AUTOMATIONRULE, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(HalPackage.Literals.SMART_HOME__ROOMS);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -173,6 +189,9 @@ public class SmartHomeItemProvider extends ItemProviderAdapter implements IEditi
 		case HalPackage.SMART_HOME__POSTAL_CODE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
+		case HalPackage.SMART_HOME__ROOMS:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -187,6 +206,9 @@ public class SmartHomeItemProvider extends ItemProviderAdapter implements IEditi
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors
+				.add(createChildParameter(HalPackage.Literals.SMART_HOME__ROOMS, HalFactory.eINSTANCE.createRoom()));
 	}
 
 	/**
