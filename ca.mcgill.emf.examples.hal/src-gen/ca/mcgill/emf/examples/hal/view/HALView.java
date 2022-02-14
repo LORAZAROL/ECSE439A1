@@ -36,7 +36,6 @@ public class HALView extends JFrame {
 	private JButton showRoomButton = new JButton();
 	private JButton showSmartHomeRoomsButton = new JButton();
 	private JButton deleteRoomButton = new JButton();
-	private JButton clearRoomButton = new JButton();
 	private JLabel roomNameLabel = new JLabel();
 	private JLabel roomNameText = new JLabel();
 	private JLabel newRoomNameLabel = new JLabel();
@@ -82,7 +81,6 @@ public class HALView extends JFrame {
 		// elements for Room
 		initializeButton(showRoomButton, "Show Room Devices", this::showRoomButtonActionPerformed);
 		initializeButton(deleteRoomButton, "Delete Room", this::deleteRoomButtonActionPerformed);
-		initializeButton(clearRoomButton, "Clear", this::clearRoomButtonActionPerformed);
 		roomNameLabel.setText("Room Name:");
 		roomNameText.setText("");
 		newRoomNameLabel.setText("New Room Name:");
@@ -142,8 +140,7 @@ public class HALView extends JFrame {
 								.addComponent(roomNameLabel)
 								.addComponent(roomsList, 200, 200, 400)
 								.addComponent(showRoomButton)
-								.addComponent(deleteRoomButton)
-								.addComponent(clearRoomButton))
+								.addComponent(deleteRoomButton))
 						.addComponent(horizontalLine)
 						.addGroup(layout.createSequentialGroup()
 								.addComponent(actuatorDeviceRadioButton)
@@ -181,8 +178,7 @@ public class HALView extends JFrame {
 								.addComponent(roomNameLabel)
 								.addComponent(roomsList)
 								.addComponent(showRoomButton)
-								.addComponent(deleteRoomButton)
-								.addComponent(clearRoomButton))
+								.addComponent(deleteRoomButton))
 						.addComponent(horizontalLine)
 						.addGroup(layout.createParallelGroup()
 								.addComponent(actuatorDeviceRadioButton)
@@ -268,10 +264,6 @@ public class HALView extends JFrame {
 		error = HALController.addRoom(String.valueOf(smartHomesList.getSelectedItem()), newRoomNameTextField.getText());
 		newRoomNameTextField.setText("");
 		refreshRoomsList(String.valueOf(smartHomesList.getSelectedItem()));
-	}
-	
-	private void clearRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		error = null;
 	}
 	
 	private void deleteRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {

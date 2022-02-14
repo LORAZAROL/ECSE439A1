@@ -45,25 +45,9 @@ public class OperationItemProvider extends PreconditionItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addSensorPropertyDescriptor(object);
 			addBooleanOperatorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Sensor feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSensorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Operation_sensor_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Operation_sensor_feature",
-								"_UI_Operation_type"),
-						HalPackage.Literals.OPERATION__SENSOR, true, false, true, null, null, null));
 	}
 
 	/**

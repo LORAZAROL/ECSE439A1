@@ -48,6 +48,7 @@ public class OperandItemProvider extends PreconditionItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addSentencePropertyDescriptor(object);
+			addSensorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -66,6 +67,21 @@ public class OperandItemProvider extends PreconditionItemProvider {
 								"_UI_Operand_type"),
 						HalPackage.Literals.OPERAND__SENTENCE, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Sensor feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSensorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Operand_sensor_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Operand_sensor_feature",
+								"_UI_Operand_type"),
+						HalPackage.Literals.OPERAND__SENSOR, true, false, true, null, null, null));
 	}
 
 	/**
