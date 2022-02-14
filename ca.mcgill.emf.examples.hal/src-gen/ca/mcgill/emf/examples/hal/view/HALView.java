@@ -58,15 +58,15 @@ public class HALView extends JFrame {
 	private JButton updateRoomButton = new JButton();
 	// Room's devices
 	private JLabel removeDevicesLabel = new JLabel();
-	private JTable devicesTable = new JTable();
-	private JScrollPane devicesScrollPane = new JScrollPane(devicesTable);
 	private JLabel newDeviceLabel = new JLabel();
 	private JTextField newDeviceNameTextField = new JTextField();
 	private JButton addDeviceButton = new JButton();
+	private JButton removeDeviceButton = new JButton();
 	public ButtonGroup deviceButtonGroup = new ButtonGroup();
 	private JRadioButton actuatorDeviceRadioButton = new JRadioButton("Actuator");
 	private JRadioButton sensorDeviceRadioButton = new JRadioButton("Sensor");
 	private JLabel deviceTypeLabel = new JLabel();
+	private JComboBox<String> devicesList = new JComboBox<String>(new String[0]);
 	private JComboBox<String> deviceTypesList = new JComboBox<String>(new String[0]);
 	private ArrayList<String> listOfDeviceTypes = new ArrayList<>(
 			Arrays.asList("Temperature Sensor", "Movement Sensor", "Light Sensor", "Heater", "Lock", "Light Switch"));
@@ -74,14 +74,9 @@ public class HALView extends JFrame {
 	
 	// data elements
 	private String error = null;
-	// Room's devices
-	private DefaultTableModel devicesDtm;
-	private String devicesColumnNames[] = {"Device"};
-	private static final int HEIGHT_devices_TABLE = 100;
 
 	public HALView() {
 		initComponents();
-		refreshData(null);
 	}
 
 	/** This method is called from within the constructor to initialize the form.
@@ -110,21 +105,7 @@ public class HALView extends JFrame {
 		
 		
 		// elements for Room's devices
-		removeDevicesLabel.setText("Select a row in the table and hit the delete key to remove the selected room's sensor or actuator");
-		this.add(devicesScrollPane);
-		Dimension d = devicesTable.getPreferredSize();
-		devicesScrollPane.setPreferredSize(new Dimension(d.width, HEIGHT_devices_TABLE));
-		devicesScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		devicesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		// enable delete key in table to remove a row (team)
-		InputMap inputMap = devicesTable.getInputMap(JComponent.WHEN_FOCUSED);
-		ActionMap actionMap = devicesTable.getActionMap();
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "delete");
-//		actionMap.put("delete", new AbstractAction() {
-//			public void actionPerformed(ActionEvent deleteEvent) {
-//		    	devicesTableDeleteKeyActionPerformed(deleteEvent);
-//		    }
-//		});
+		removeDevicesLabel.setText("Select a room's device and hit the delete key to remove the selected room's sensor or actuator");
 		
 		
 		newDeviceLabel.setText("New Device Name:");
@@ -183,7 +164,8 @@ public class HALView extends JFrame {
 								.addComponent(newDeviceNameTextField, 200, 200, 400)
 								.addComponent(addDeviceButton))
 						.addComponent(removeDevicesLabel)
-						.addComponent(devicesScrollPane)
+						.addComponent(devicesList)
+						.addComponent(removeDeviceButton)
 				));
 
 		layout.setVerticalGroup(
@@ -221,7 +203,8 @@ public class HALView extends JFrame {
 								.addComponent(newDeviceNameTextField)
 								.addComponent(addDeviceButton))
 						.addComponent(removeDevicesLabel)
-						.addComponent(devicesScrollPane)
+						.addComponent(devicesList, 200, 200, 400)
+						.addComponent(removeDeviceButton)
 				));
 		
 		pack();
@@ -271,71 +254,11 @@ public class HALView extends JFrame {
 		// error
 		errorMessage.setText(error);
 		if (error == null || error.length() == 0) {
+			devicesList.removeAllItems();
+			for (String roomDeviceInfo : HALController.getRoomDevices(String.valueOf(smartHomesList.getSelectedItem()), String.valueOf(roomsList.getSelectedItem()))) {
+				devicesList.addItem(roomDeviceInfo);
+			}
 		}
-
-		// this is needed because the size of the window changes depending on whether an error message is shown or not
-		pack();
-	}
-
-	/** This method is called each time the page needs to be updated to the latest data.
-	 *  An empty page is shown if null is passed into the method.
-	 */
-	private void refreshData(String RoomName) {
-//		// error
-//		errorMessage.setText(error);
-//		if (error == null || error.length() == 0) {
-//			// retrieve the Room
-//			TORoom foundRoom = null;
-//			if (RoomName != null) {
-//				foundRoom = HALController.getRoom(RoomName);
-//			}
-//			// populate Room list
-//			roomsList.removeAllItems();
-//			int index = 0, foundIndex = -1;
-//			for (String rName : HALController.getRooms()) {
-//				roomsList.addItem(rName);
-//				if (rName.equals(foundRoom == null ? null : foundRoom.getName())) {
-//					foundIndex = index;
-//				}
-//				index++;
-//			};
-//			// enable Rooms list UI elements only if at least one Room exist
-//			roomsList.setEnabled(index > 0);
-//			roomsList.setSelectedIndex(foundIndex);
-//			showRoomButton.setEnabled(index > 0);
-//			deleteRoomButton.setEnabled(index > 0);
-//			// populate other UI elements depending on whether a Room was found or not
-//			if (foundIndex == -1) {
-//				foundRoom = null;
-//				// Room
-//				RoomNameText.setText("");
-//				newRoomNameTextField.setText("");
-//				// Room's devices
-//				//populatedevicesTable(null);
-//				newTeamNameTextField.setText("");
-//				// set allowed UI elements to enabled 
-//				clearRoomButton.setEnabled(false);
-//				addRoomButton.setEnabled(true);
-//				updateRoomButton.setEnabled(false);
-//				newTeamNameTextField.setEnabled(false);
-//				addTeamButton.setEnabled(false);
-//			} else {
-//				// Room
-//				RoomNameText.setText(foundRoom.getName());
-//				newRoomNameTextField.setText(foundRoom.getName());
-//				// Room's devices
-//				populatedevicesTable(foundRoom);
-//				newTeamNameTextField.setText("");
-//				// set allowed UI elements to enabled
-//				clearRoomButton.setEnabled(true);
-//				addRoomButton.setEnabled(false);
-//				updateRoomButton.setEnabled(true);
-//				newTeamNameTextField.setEnabled(true);
-//				addTeamButton.setEnabled(true);
-//			}
-//			Dimension d = devicesTable.getPreferredSize();
-//			devicesScrollPane.setPreferredSize(new Dimension(d.width, HEIGHT_devices_TABLE));
-//		}
 
 		// this is needed because the size of the window changes depending on whether an error message is shown or not
 		pack();
@@ -359,7 +282,6 @@ public class HALView extends JFrame {
 	
 	private void clearRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		error = null;
-		refreshData(null);
 	}
 	
 	private void deleteRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -404,18 +326,6 @@ public class HALView extends JFrame {
 		
 		refreshDevicesList();
 	}
-	
-//	private void devicesTableDeleteKeyActionPerformed(java.awt.event.ActionEvent evt) {
-//		if (devicesTable.getSelectedRow() != -1) {
-//			String teamName = (String) devicesTable.getModel().getValueAt(devicesTable.getSelectedRow(), 0);
-//	        int choice = JOptionPane.showConfirmDialog(null, "Do you want to delete team " + teamName + "?", 
-//	        		"Confirm Deletion",	JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-//			if (choice == 0) { 
-//				error = HALController.removeTeam(teamName);
-//				refreshData(RoomNameText.getText());
-//			}
-//		}
-//	}
 
 	/** The following methods are helper methods to simplify the methods.
 	 */
@@ -431,17 +341,5 @@ public class HALView extends JFrame {
 			deviceTypesList.addItem(deviceType);
 		}
 	}
-
-//	private void populatedevicesTable(TORoom foundRoom) {
-//		devicesDtm = new DefaultTableModel(0, 0);
-//		devicesDtm.setColumnIdentifiers(devicesColumnNames);
-//		devicesTable.setModel(devicesDtm);
-//		if (foundRoom != null) {
-//			for (String teamName : foundRoom.getTeamNames()) {
-//				Object[] obj = {teamName};
-//				devicesDtm.addRow(obj);
-//			}
-//		}
-//	}
 	
 }

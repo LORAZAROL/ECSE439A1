@@ -72,12 +72,12 @@ public class HALController {
 	 * 
 	 * @param roomName
 	 */
-	public static String getRoomDevices(String address, String roomName) {
+	public static ArrayList<String> getRoomDevices(String address, String roomName) {
 		// get the target room
 		Room room = getTargetRoom(address, roomName);
 		// get the devices names and types of the room
 		EList<Device> devices = room.getDevices();		
-		
+		ArrayList<String> roomDeviceInfoList = new ArrayList<>();
 		String message = "Room name: " + roomName + "\n";
 		for(int i = 0; i < devices.size(); i++) {
 			Device d = devices.get(i);
@@ -92,10 +92,10 @@ public class HALController {
 			
 			// append device name and type to message
 			String deviceInfo = "Device name: " + d.getName() + "\t Device type: " + deviceType + "\n";
-			message += deviceInfo;
+			roomDeviceInfoList.add(message+deviceInfo);
 		}
 		
-		return message;
+		return roomDeviceInfoList;
 	}
 	
 	/**
