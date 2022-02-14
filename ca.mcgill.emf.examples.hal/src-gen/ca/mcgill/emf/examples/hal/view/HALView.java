@@ -292,8 +292,8 @@ public class HALView extends JFrame {
 			String deviceInfo = (String) devicesList.getSelectedItem();
 	        int choice = JOptionPane.showConfirmDialog(null, "Do you want to delete" + deviceInfo + "?", 
 	        		"Confirm Deletion",	JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-			if (choice == 0) { 
-				//error = HALController.deleteDeviceOfRoom(String.valueOf(smartHomesList.getSelectedItem()),roomsList.getSelectedItem());
+			if (choice == 0) {
+				error = HALController.deleteDevice(String.valueOf(devicesList.getSelectedItem()));
 				refreshRoomsList(String.valueOf(smartHomesList.getSelectedItem()));
 				refreshDevicesList();
 			}

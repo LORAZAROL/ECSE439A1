@@ -2,8 +2,6 @@
  */
 package ca.mcgill.emf.examples.hal;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Operation</b></em>'.
@@ -13,7 +11,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ca.mcgill.emf.examples.hal.Operation#getSensor <em>Sensor</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.Operation#getBooleanOperator <em>Boolean Operator</em>}</li>
  * </ul>
  *
@@ -22,18 +19,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Operation extends Precondition {
-	/**
-	 * Returns the value of the '<em><b>Sensor</b></em>' reference list.
-	 * The list contents are of type {@link ca.mcgill.emf.examples.hal.Sensor}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sensor</em>' reference list.
-	 * @see ca.mcgill.emf.examples.hal.HalPackage#getOperation_Sensor()
-	 * @model required="true" upper="2"
-	 * @generated
-	 */
-	EList<Sensor> getSensor();
-
 	/**
 	 * Returns the value of the '<em><b>Boolean Operator</b></em>' attribute.
 	 * The literals are from the enumeration {@link ca.mcgill.emf.examples.hal.BooleanOperator}.

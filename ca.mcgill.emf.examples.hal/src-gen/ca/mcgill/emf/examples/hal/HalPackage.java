@@ -839,13 +839,22 @@ public interface HalPackage extends EPackage {
 	int OPERAND__SENTENCE = PRECONDITION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Sensor</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERAND__SENSOR = PRECONDITION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Operand</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERAND_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 2;
+	int OPERAND_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Operand</em>' class.
@@ -867,22 +876,13 @@ public interface HalPackage extends EPackage {
 	int OPERATION = 16;
 
 	/**
-	 * The feature id for the '<em><b>Sensor</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__SENSOR = PRECONDITION_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Boolean Operator</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__BOOLEAN_OPERATOR = PRECONDITION_FEATURE_COUNT + 1;
+	int OPERATION__BOOLEAN_OPERATOR = PRECONDITION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Operation</em>' class.
@@ -891,7 +891,7 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 2;
+	int OPERATION_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Operation</em>' class.
@@ -1513,6 +1513,17 @@ public interface HalPackage extends EPackage {
 	EAttribute getOperand_Sentence();
 
 	/**
+	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.Operand#getSensor <em>Sensor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Sensor</em>'.
+	 * @see ca.mcgill.emf.examples.hal.Operand#getSensor()
+	 * @see #getOperand()
+	 * @generated
+	 */
+	EReference getOperand_Sensor();
+
+	/**
 	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Operation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1521,17 +1532,6 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getOperation();
-
-	/**
-	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.Operation#getSensor <em>Sensor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Sensor</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Operation#getSensor()
-	 * @see #getOperation()
-	 * @generated
-	 */
-	EReference getOperation_Sensor();
 
 	/**
 	 * Returns the meta object for the attribute '{@link ca.mcgill.emf.examples.hal.Operation#getBooleanOperator <em>Boolean Operator</em>}'.
@@ -2020,6 +2020,14 @@ public interface HalPackage extends EPackage {
 		EAttribute OPERAND__SENTENCE = eINSTANCE.getOperand_Sentence();
 
 		/**
+		 * The meta object literal for the '<em><b>Sensor</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERAND__SENSOR = eINSTANCE.getOperand_Sensor();
+
+		/**
 		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.OperationImpl <em>Operation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2028,14 +2036,6 @@ public interface HalPackage extends EPackage {
 		 * @generated
 		 */
 		EClass OPERATION = eINSTANCE.getOperation();
-
-		/**
-		 * The meta object literal for the '<em><b>Sensor</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OPERATION__SENSOR = eINSTANCE.getOperation_Sensor();
 
 		/**
 		 * The meta object literal for the '<em><b>Boolean Operator</b></em>' attribute feature.

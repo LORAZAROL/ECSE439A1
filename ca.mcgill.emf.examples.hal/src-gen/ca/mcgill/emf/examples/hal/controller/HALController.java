@@ -15,6 +15,11 @@ import ca.mcgill.emf.examples.hal.*;
  */
 public class HALController {
 
+	/**
+	 * Add a smartHome to current HA system
+	 * @param smartHomeAddress
+	 * @return
+	 */
 	public static String addSmartHome(String smartHomeAddress) {
 		if (isStringValid(smartHomeAddress)) {
 			return "Smart Home address must be specified";
@@ -67,8 +72,7 @@ public class HALController {
 	 * List the names and types of all sensors and actuators of given room
 	 * in the format of:
 	 * 
-	 * Room name: room01
-	 * Device name: temperature sensor 01 	Device type: temperature sensor, humidity sensor
+	 * Room name: room01;	Device name: temperature sensor 01; 	Device type: temperature sensor, humidity sensor
 	 * 
 	 * @param roomName
 	 */
@@ -78,7 +82,7 @@ public class HALController {
 		// get the devices names and types of the room
 		EList<Device> devices = room.getDevices();		
 		ArrayList<String> roomDeviceInfoList = new ArrayList<>();
-		String message = "Room name: " + roomName + "\n";
+		String message = "Room name: " + roomName + ";";
 		for(int i = 0; i < devices.size(); i++) {
 			Device d = devices.get(i);
 			
@@ -91,7 +95,8 @@ public class HALController {
 			}
 			
 			// append device name and type to message
-			String deviceInfo = "Device name: " + d.getName() + "\t Device type: " + deviceType + "\n";
+			// TODO: not sure why the box doesn't show \n so now use;
+			String deviceInfo = "Device name: " + d.getName() + ";Device type: " + deviceType;
 			roomDeviceInfoList.add(message+deviceInfo);
 		}
 		
@@ -133,7 +138,6 @@ public class HALController {
 		home.getRooms().remove(room);
 		HALApplication.save();
 		return null;
-		// todo: report error when not exist?
 	}
 	
 	/**
@@ -175,24 +179,81 @@ public class HALController {
 	/**
 	 * Delete a device (given device instance) from a room
 	 * @param room
-	 * @param device
+	 * @param deviceInfo
 	 */
-	public static void deleteDeviceOfRoom(String address, String roomName, String deviceName) {
+	public static String deleteDeviceOfRoom(String address, String roomName, String deviceInfo) {
+		
+		String deviceName = retrieveDeviceName(deviceInfo);
+		if(deviceName == null) {
+			return "Device " + deviceName + "is not found";
+		}
+		
 		Room room = getTargetRoom(address, roomName);
 		Device targetDevice = getTargetDevice(deviceName);
 		
 		EList<Device> deviceList = room.getDevices();
-		boolean exist = false;
 		for(int i = 0; i < deviceList.size(); i++) {
 			Device curr = deviceList.get(i);
 			if(curr == targetDevice) {
-				exist = true;
+				targetDevice = curr;
 			}
 		}
 		
-		if(exist) room.getDevices().remove(targetDevice);
+		if(targetDevice == null) {
+			return "Device " + deviceName + "is not found";
+		}
+		
+		room.getDevices().remove(targetDevice);
+		return null;
 	}
 	
+	/**
+	 * Delete a device by the box clicked
+	 * @param deviceInfo 
+	 */
+	public static String deleteDevice(String deviceInfo) {
+		String deviceName = retrieveDeviceName(deviceInfo);
+		if(deviceName == null) {
+			return "Device " + deviceName + "is not found";
+		}
+		Device targetDevice = getTargetDevice(deviceName);
+		ArrayList<Device> deviceList = getAllDevices();
+		for(int i = 0; i < deviceList.size(); i++) {
+			Device curr = deviceList.get(i);
+			if(curr == targetDevice) {
+				targetDevice = curr;
+			}
+		}
+		
+		if(targetDevice == null) {
+			return "Device " + deviceName + "is not found";
+		}
+		
+		Room r = targetDevice.getRoom();
+		r.getDevices().remove(targetDevice);
+		return null;
+	}
+	
+	////// Helper methods //////
+	/**
+	 * When select the device and return its string value, it returns all info including room, type.
+	 * This method retrieves only the name of a device from the parsed string.
+	 * @param deviceInfo
+	 * @return
+	 */
+	private static String retrieveDeviceName(String deviceInfo) {
+		String deviceNameHint = "Device name: ";
+		//Room name: ...;	Device name: ...;	Device type:... -> Device name: ...;
+		String namePart = deviceInfo.split(";")[1]; 
+		int hintLen = deviceNameHint.length();
+		if(!namePart.contains(deviceNameHint) || namePart == null || namePart.length() < hintLen) {
+			System.out.println("Get empty device info");
+			return null;
+		}
+		
+		String name = namePart.substring(hintLen, namePart.length());
+		return name;
+	}
 	
 	////// Methods to access certain object in Model //////
 	
@@ -242,7 +303,6 @@ public class HALController {
 		}
 		
 		if(target == null) {
-			// todo: send error log
 			return null;
 		}
 		

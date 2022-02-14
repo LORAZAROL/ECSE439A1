@@ -667,6 +667,15 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getOperand_Sensor() {
+		return (EReference) operandEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOperation() {
 		return operationEClass;
 	}
@@ -676,17 +685,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperation_Sensor() {
-		return (EReference) operationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getOperation_BooleanOperator() {
-		return (EAttribute) operationEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) operationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -824,9 +824,9 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		operandEClass = createEClass(OPERAND);
 		createEReference(operandEClass, OPERAND__PRECONDITION);
 		createEAttribute(operandEClass, OPERAND__SENTENCE);
+		createEReference(operandEClass, OPERAND__SENSOR);
 
 		operationEClass = createEClass(OPERATION);
-		createEReference(operationEClass, OPERATION__SENSOR);
 		createEAttribute(operationEClass, OPERATION__BOOLEAN_OPERATOR);
 
 		sensorTypeEClass = createEClass(SENSOR_TYPE);
@@ -1007,12 +1007,12 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperand_Sentence(), ecorePackage.getEString(), "sentence", null, 0, 1, Operand.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperand_Sensor(), this.getSensor(), null, "sensor", null, 1, 2, Operand.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOperation_Sensor(), this.getSensor(), null, "sensor", null, 1, 2, Operation.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperation_BooleanOperator(), this.getBooleanOperator(), "booleanOperator", null, 0, 1,
 				Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);

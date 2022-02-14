@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link ca.mcgill.emf.examples.hal.Operand#getPrecondition <em>Precondition</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.Operand#getSentence <em>Sentence</em>}</li>
+ *   <li>{@link ca.mcgill.emf.examples.hal.Operand#getSensor <em>Sensor</em>}</li>
  * </ul>
  *
  * @see ca.mcgill.emf.examples.hal.HalPackage#getOperand()
@@ -55,5 +56,17 @@ public interface Operand extends Precondition {
 	 * @generated
 	 */
 	void setSentence(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Sensor</b></em>' reference list.
+	 * The list contents are of type {@link ca.mcgill.emf.examples.hal.Sensor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sensor</em>' reference list.
+	 * @see ca.mcgill.emf.examples.hal.HalPackage#getOperand_Sensor()
+	 * @model required="true" upper="2"
+	 * @generated
+	 */
+	EList<Sensor> getSensor();
 
 } // Operand

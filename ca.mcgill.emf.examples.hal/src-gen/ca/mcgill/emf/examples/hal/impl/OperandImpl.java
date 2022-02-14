@@ -6,6 +6,7 @@ import ca.mcgill.emf.examples.hal.HalPackage;
 import ca.mcgill.emf.examples.hal.Operand;
 import ca.mcgill.emf.examples.hal.Precondition;
 
+import ca.mcgill.emf.examples.hal.Sensor;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -31,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.OperandImpl#getPrecondition <em>Precondition</em>}</li>
  *   <li>{@link ca.mcgill.emf.examples.hal.impl.OperandImpl#getSentence <em>Sentence</em>}</li>
+ *   <li>{@link ca.mcgill.emf.examples.hal.impl.OperandImpl#getSensor <em>Sensor</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,6 +68,16 @@ public class OperandImpl extends PreconditionImpl implements Operand {
 	 * @ordered
 	 */
 	protected String sentence = SENTENCE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSensor() <em>Sensor</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSensor()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Sensor> sensor;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,6 +137,18 @@ public class OperandImpl extends PreconditionImpl implements Operand {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Sensor> getSensor() {
+		if (sensor == null) {
+			sensor = new EObjectResolvingEList<Sensor>(Sensor.class, this, HalPackage.OPERAND__SENSOR);
+		}
+		return sensor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -145,6 +170,8 @@ public class OperandImpl extends PreconditionImpl implements Operand {
 			return getPrecondition();
 		case HalPackage.OPERAND__SENTENCE:
 			return getSentence();
+		case HalPackage.OPERAND__SENSOR:
+			return getSensor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -165,6 +192,10 @@ public class OperandImpl extends PreconditionImpl implements Operand {
 		case HalPackage.OPERAND__SENTENCE:
 			setSentence((String) newValue);
 			return;
+		case HalPackage.OPERAND__SENSOR:
+			getSensor().clear();
+			getSensor().addAll((Collection<? extends Sensor>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -183,6 +214,9 @@ public class OperandImpl extends PreconditionImpl implements Operand {
 		case HalPackage.OPERAND__SENTENCE:
 			setSentence(SENTENCE_EDEFAULT);
 			return;
+		case HalPackage.OPERAND__SENSOR:
+			getSensor().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -199,6 +233,8 @@ public class OperandImpl extends PreconditionImpl implements Operand {
 			return precondition != null && !precondition.isEmpty();
 		case HalPackage.OPERAND__SENTENCE:
 			return SENTENCE_EDEFAULT == null ? sentence != null : !SENTENCE_EDEFAULT.equals(sentence);
+		case HalPackage.OPERAND__SENSOR:
+			return sensor != null && !sensor.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
