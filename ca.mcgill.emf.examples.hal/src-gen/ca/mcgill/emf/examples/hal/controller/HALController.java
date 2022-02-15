@@ -79,6 +79,9 @@ public class HALController {
 	public static ArrayList<String> getRoomDevices(String address, String roomName) {
 		// get the target room
 		Room room = getTargetRoom(address, roomName);
+		
+		if(room == null) return null;
+		
 		// get the devices names and types of the room
 		EList<Device> devices = room.getDevices();		
 		ArrayList<String> roomDeviceInfoList = new ArrayList<>();
@@ -293,6 +296,8 @@ public class HALController {
 		
 		EList<Room> list = getRoomsOfSmartHome(address);
 		
+		if(list == null) return null;
+		
 		// go through all homes to see if the given room exists
 		for(int i = 0; i < list.size(); i++) {
 			Room cur = list.get(i);
@@ -347,6 +352,11 @@ public class HALController {
 		HomeAutomationSystem homeAutomationSystem = HALApplication.getHomeAutomationSystem();
 		// get all smart homes and add their rooms into rooms list
 		SmartHome home = getTargetSmartHome(address, homeAutomationSystem.getSmarthomes());
+		
+		if(home == null) {
+			return null;
+		}
+		
 		EList<Room> rooms = home.getRooms();
 		
 		return rooms;
@@ -366,7 +376,7 @@ public class HALController {
 		for(int i = 0; i < allSmartHome.size(); i++) {
 			EList<Room> roomsOfHome = getRoomsOfSmartHome(allSmartHome.get(i).getAddress());
 			for(int j = 0; j < roomsOfHome.size(); j++) {
-				EList<Device> deviceOfRoom = roomsOfHome.get(i).getDevices();
+				EList<Device> deviceOfRoom = roomsOfHome.get(j).getDevices();
 				for(int k = 0; k < deviceOfRoom.size(); k++) {
 					Device d = deviceOfRoom.get(k);
 					devices.add(d);

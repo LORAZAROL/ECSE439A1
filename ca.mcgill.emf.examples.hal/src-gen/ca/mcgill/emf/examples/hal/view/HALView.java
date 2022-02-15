@@ -243,10 +243,17 @@ public class HALView extends JFrame {
 	private void refreshDevicesList() {
 		// error
 		errorMessage.setText(error);
-		if (error == null || error.length() == 0) {
+		
+		// check if error, if there is any room selected
+		if (error == null || error.length() == 0 || roomsList.getSelectedItem() != null) {
 			devicesList.removeAllItems();
-			for (String roomDeviceInfo : HALController.getRoomDevices(String.valueOf(smartHomesList.getSelectedItem()), String.valueOf(roomsList.getSelectedItem()))) {
-				devicesList.addItem(roomDeviceInfo);
+			ArrayList<String> roomDevices = HALController.getRoomDevices(String.valueOf(smartHomesList.getSelectedItem()), String.valueOf(roomsList.getSelectedItem()));
+			
+			// it is possible for a smartHome to not have any device
+			if(roomDevices != null) {
+				roomDevices.forEach((roomDeviceInfo) -> {
+					devicesList.addItem(roomDeviceInfo);
+				});
 			}
 		}
 
