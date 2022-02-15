@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <hal:HomeAutomationSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hal="http://www.example.org/hal">
-  <smarthomes address="ddfs">
-    <rooms name="sdf" devices="sdgr sdgrwer"/>
+  <smarthomes address="123">
+    <rooms name="Room 1" devices="Device 2"/>
+    <rooms name="Room 2"/>
   </smarthomes>
 </hal:HomeAutomationSystem>
