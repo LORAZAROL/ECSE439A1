@@ -9,14 +9,13 @@ import ca.mcgill.emf.examples.hal.ActuatorType;
 import ca.mcgill.emf.examples.hal.AutomationActivity;
 import ca.mcgill.emf.examples.hal.AutomationRule;
 import ca.mcgill.emf.examples.hal.BooleanOperator;
+import ca.mcgill.emf.examples.hal.Composite;
 import ca.mcgill.emf.examples.hal.ControlCommand;
 import ca.mcgill.emf.examples.hal.Device;
 import ca.mcgill.emf.examples.hal.DeviceType;
 import ca.mcgill.emf.examples.hal.HalFactory;
 import ca.mcgill.emf.examples.hal.HalPackage;
 import ca.mcgill.emf.examples.hal.HomeAutomationSystem;
-import ca.mcgill.emf.examples.hal.Operand;
-import ca.mcgill.emf.examples.hal.Operation;
 import ca.mcgill.emf.examples.hal.Owner;
 import ca.mcgill.emf.examples.hal.Precondition;
 import ca.mcgill.emf.examples.hal.Room;
@@ -24,6 +23,7 @@ import ca.mcgill.emf.examples.hal.Sensor;
 import ca.mcgill.emf.examples.hal.SensorActivity;
 import ca.mcgill.emf.examples.hal.SensorType;
 import ca.mcgill.emf.examples.hal.SmartHome;
+import ca.mcgill.emf.examples.hal.TerminalExpression;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -151,14 +151,14 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass operandEClass = null;
+	private EClass compositeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass operationEClass = null;
+	private EClass terminalExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -640,8 +640,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOperand() {
-		return operandEClass;
+	public EClass getComposite() {
+		return compositeEClass;
 	}
 
 	/**
@@ -649,8 +649,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperand_Precondition() {
-		return (EReference) operandEClass.getEStructuralFeatures().get(0);
+	public EReference getComposite_Precondition() {
+		return (EReference) compositeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -658,8 +658,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOperand_Sentence() {
-		return (EAttribute) operandEClass.getEStructuralFeatures().get(1);
+	public EAttribute getComposite_BooleanOperator() {
+		return (EAttribute) compositeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -667,8 +667,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperand_Sensor() {
-		return (EReference) operandEClass.getEStructuralFeatures().get(2);
+	public EClass getTerminalExpression() {
+		return terminalExpressionEClass;
 	}
 
 	/**
@@ -676,8 +676,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOperation() {
-		return operationEClass;
+	public EAttribute getTerminalExpression_String() {
+		return (EAttribute) terminalExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -685,8 +685,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOperation_BooleanOperator() {
-		return (EAttribute) operationEClass.getEStructuralFeatures().get(0);
+	public EReference getTerminalExpression_Sensor() {
+		return (EReference) terminalExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -821,13 +821,13 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 
 		preconditionEClass = createEClass(PRECONDITION);
 
-		operandEClass = createEClass(OPERAND);
-		createEReference(operandEClass, OPERAND__PRECONDITION);
-		createEAttribute(operandEClass, OPERAND__SENTENCE);
-		createEReference(operandEClass, OPERAND__SENSOR);
+		compositeEClass = createEClass(COMPOSITE);
+		createEReference(compositeEClass, COMPOSITE__PRECONDITION);
+		createEAttribute(compositeEClass, COMPOSITE__BOOLEAN_OPERATOR);
 
-		operationEClass = createEClass(OPERATION);
-		createEAttribute(operationEClass, OPERATION__BOOLEAN_OPERATOR);
+		terminalExpressionEClass = createEClass(TERMINAL_EXPRESSION);
+		createEAttribute(terminalExpressionEClass, TERMINAL_EXPRESSION__STRING);
+		createEReference(terminalExpressionEClass, TERMINAL_EXPRESSION__SENSOR);
 
 		sensorTypeEClass = createEClass(SENSOR_TYPE);
 		createEReference(sensorTypeEClass, SENSOR_TYPE__SENSORS);
@@ -877,8 +877,8 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		actuatorActivityEClass.getESuperTypes().add(this.getActivity());
 		sensorActivityEClass.getESuperTypes().add(this.getActivity());
 		sensorEClass.getESuperTypes().add(this.getDevice());
-		operandEClass.getESuperTypes().add(this.getPrecondition());
-		operationEClass.getESuperTypes().add(this.getPrecondition());
+		compositeEClass.getESuperTypes().add(this.getPrecondition());
+		terminalExpressionEClass.getESuperTypes().add(this.getPrecondition());
 		sensorTypeEClass.getESuperTypes().add(this.getDeviceType());
 		actuatorTypeEClass.getESuperTypes().add(this.getDeviceType());
 
@@ -1001,21 +1001,23 @@ public class HalPackageImpl extends EPackageImpl implements HalPackage {
 		initEClass(preconditionEClass, Precondition.class, "Precondition", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(operandEClass, Operand.class, "Operand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOperand_Precondition(), this.getPrecondition(), null, "precondition", null, 0, -1,
-				Operand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOperand_Sentence(), ecorePackage.getEString(), "sentence", null, 0, 1, Operand.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOperand_Sensor(), this.getSensor(), null, "sensor", null, 1, 2, Operand.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-
-		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(compositeEClass, Composite.class, "Composite", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOperation_BooleanOperator(), this.getBooleanOperator(), "booleanOperator", null, 0, 1,
-				Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEReference(getComposite_Precondition(), this.getPrecondition(), null, "precondition", null, 1, -1,
+				Composite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComposite_BooleanOperator(), this.getBooleanOperator(), "booleanOperator", null, 0, 1,
+				Composite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(terminalExpressionEClass, TerminalExpression.class, "TerminalExpression", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTerminalExpression_String(), theXMLTypePackage.getString(), "String", null, 0, 1,
+				TerminalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getTerminalExpression_Sensor(), this.getSensor(), null, "sensor", null, 1, 2,
+				TerminalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sensorTypeEClass, SensorType.class, "SensorType", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

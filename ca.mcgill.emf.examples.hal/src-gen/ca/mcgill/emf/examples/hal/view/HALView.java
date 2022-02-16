@@ -221,7 +221,7 @@ public class HALView extends JFrame {
 	private void refreshRoomsList(String smartHomeAddress) {
 		// error
 		errorMessage.setText(error);
-		if (error == null || error.length() == 0) {
+		if (error == null || error.length() == 0 || smartHomesList.getSelectedItem() != null) {
 			// populate group list
 			roomsList.removeAllItems();
 			for (Room room : HALController.getRoomsOfSmartHome(smartHomeAddress)) {
@@ -301,7 +301,7 @@ public class HALView extends JFrame {
 	
 	private void showRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		error = null;
-		refreshRoomsList(String.valueOf(smartHomesList.getSelectedItem()));
+		refreshDevicesList();
 	}
 	
 	private void showSmartHomeRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {

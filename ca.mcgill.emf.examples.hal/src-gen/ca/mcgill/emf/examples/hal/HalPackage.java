@@ -811,14 +811,14 @@ public interface HalPackage extends EPackage {
 	int PRECONDITION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.impl.OperandImpl <em>Operand</em>}' class.
+	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.impl.CompositeImpl <em>Composite</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see ca.mcgill.emf.examples.hal.impl.OperandImpl
-	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getOperand()
+	 * @see ca.mcgill.emf.examples.hal.impl.CompositeImpl
+	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getComposite()
 	 * @generated
 	 */
-	int OPERAND = 15;
+	int COMPOSITE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
@@ -827,53 +827,7 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERAND__PRECONDITION = PRECONDITION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Sentence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERAND__SENTENCE = PRECONDITION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Sensor</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERAND__SENSOR = PRECONDITION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Operand</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERAND_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Operand</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERAND_OPERATION_COUNT = PRECONDITION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.impl.OperationImpl <em>Operation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ca.mcgill.emf.examples.hal.impl.OperationImpl
-	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getOperation()
-	 * @generated
-	 */
-	int OPERATION = 16;
+	int COMPOSITE__PRECONDITION = PRECONDITION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Boolean Operator</b></em>' attribute.
@@ -882,25 +836,71 @@ public interface HalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__BOOLEAN_OPERATOR = PRECONDITION_FEATURE_COUNT + 0;
+	int COMPOSITE__BOOLEAN_OPERATOR = PRECONDITION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Operation</em>' class.
+	 * The number of structural features of the '<em>Composite</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 1;
+	int COMPOSITE_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Operation</em>' class.
+	 * The number of operations of the '<em>Composite</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_OPERATION_COUNT = PRECONDITION_OPERATION_COUNT + 0;
+	int COMPOSITE_OPERATION_COUNT = PRECONDITION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.impl.TerminalExpressionImpl <em>Terminal Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ca.mcgill.emf.examples.hal.impl.TerminalExpressionImpl
+	 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getTerminalExpression()
+	 * @generated
+	 */
+	int TERMINAL_EXPRESSION = 16;
+
+	/**
+	 * The feature id for the '<em><b>String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL_EXPRESSION__STRING = PRECONDITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Sensor</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL_EXPRESSION__SENSOR = PRECONDITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Terminal Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL_EXPRESSION_FEATURE_COUNT = PRECONDITION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Terminal Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL_EXPRESSION_OPERATION_COUNT = PRECONDITION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ca.mcgill.emf.examples.hal.impl.SensorTypeImpl <em>Sensor Type</em>}' class.
@@ -1481,68 +1481,68 @@ public interface HalPackage extends EPackage {
 	EClass getPrecondition();
 
 	/**
-	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Operand <em>Operand</em>}'.
+	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Composite <em>Composite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Operand</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Operand
+	 * @return the meta object for class '<em>Composite</em>'.
+	 * @see ca.mcgill.emf.examples.hal.Composite
 	 * @generated
 	 */
-	EClass getOperand();
+	EClass getComposite();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ca.mcgill.emf.examples.hal.Operand#getPrecondition <em>Precondition</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ca.mcgill.emf.examples.hal.Composite#getPrecondition <em>Precondition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Precondition</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Operand#getPrecondition()
-	 * @see #getOperand()
+	 * @see ca.mcgill.emf.examples.hal.Composite#getPrecondition()
+	 * @see #getComposite()
 	 * @generated
 	 */
-	EReference getOperand_Precondition();
+	EReference getComposite_Precondition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ca.mcgill.emf.examples.hal.Operand#getSentence <em>Sentence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Sentence</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Operand#getSentence()
-	 * @see #getOperand()
-	 * @generated
-	 */
-	EAttribute getOperand_Sentence();
-
-	/**
-	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.Operand#getSensor <em>Sensor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Sensor</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Operand#getSensor()
-	 * @see #getOperand()
-	 * @generated
-	 */
-	EReference getOperand_Sensor();
-
-	/**
-	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.Operation <em>Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Operation</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Operation
-	 * @generated
-	 */
-	EClass getOperation();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ca.mcgill.emf.examples.hal.Operation#getBooleanOperator <em>Boolean Operator</em>}'.
+	 * Returns the meta object for the attribute '{@link ca.mcgill.emf.examples.hal.Composite#getBooleanOperator <em>Boolean Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Boolean Operator</em>'.
-	 * @see ca.mcgill.emf.examples.hal.Operation#getBooleanOperator()
-	 * @see #getOperation()
+	 * @see ca.mcgill.emf.examples.hal.Composite#getBooleanOperator()
+	 * @see #getComposite()
 	 * @generated
 	 */
-	EAttribute getOperation_BooleanOperator();
+	EAttribute getComposite_BooleanOperator();
+
+	/**
+	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.TerminalExpression <em>Terminal Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Terminal Expression</em>'.
+	 * @see ca.mcgill.emf.examples.hal.TerminalExpression
+	 * @generated
+	 */
+	EClass getTerminalExpression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ca.mcgill.emf.examples.hal.TerminalExpression#getString <em>String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String</em>'.
+	 * @see ca.mcgill.emf.examples.hal.TerminalExpression#getString()
+	 * @see #getTerminalExpression()
+	 * @generated
+	 */
+	EAttribute getTerminalExpression_String();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.TerminalExpression#getSensor <em>Sensor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Sensor</em>'.
+	 * @see ca.mcgill.emf.examples.hal.TerminalExpression#getSensor()
+	 * @see #getTerminalExpression()
+	 * @generated
+	 */
+	EReference getTerminalExpression_Sensor();
 
 	/**
 	 * Returns the meta object for class '{@link ca.mcgill.emf.examples.hal.SensorType <em>Sensor Type</em>}'.
@@ -1994,14 +1994,14 @@ public interface HalPackage extends EPackage {
 		EClass PRECONDITION = eINSTANCE.getPrecondition();
 
 		/**
-		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.OperandImpl <em>Operand</em>}' class.
+		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.CompositeImpl <em>Composite</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see ca.mcgill.emf.examples.hal.impl.OperandImpl
-		 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getOperand()
+		 * @see ca.mcgill.emf.examples.hal.impl.CompositeImpl
+		 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getComposite()
 		 * @generated
 		 */
-		EClass OPERAND = eINSTANCE.getOperand();
+		EClass COMPOSITE = eINSTANCE.getComposite();
 
 		/**
 		 * The meta object literal for the '<em><b>Precondition</b></em>' containment reference list feature.
@@ -2009,33 +2009,7 @@ public interface HalPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPERAND__PRECONDITION = eINSTANCE.getOperand_Precondition();
-
-		/**
-		 * The meta object literal for the '<em><b>Sentence</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OPERAND__SENTENCE = eINSTANCE.getOperand_Sentence();
-
-		/**
-		 * The meta object literal for the '<em><b>Sensor</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OPERAND__SENSOR = eINSTANCE.getOperand_Sensor();
-
-		/**
-		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.OperationImpl <em>Operation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see ca.mcgill.emf.examples.hal.impl.OperationImpl
-		 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getOperation()
-		 * @generated
-		 */
-		EClass OPERATION = eINSTANCE.getOperation();
+		EReference COMPOSITE__PRECONDITION = eINSTANCE.getComposite_Precondition();
 
 		/**
 		 * The meta object literal for the '<em><b>Boolean Operator</b></em>' attribute feature.
@@ -2043,7 +2017,33 @@ public interface HalPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OPERATION__BOOLEAN_OPERATOR = eINSTANCE.getOperation_BooleanOperator();
+		EAttribute COMPOSITE__BOOLEAN_OPERATOR = eINSTANCE.getComposite_BooleanOperator();
+
+		/**
+		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.TerminalExpressionImpl <em>Terminal Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ca.mcgill.emf.examples.hal.impl.TerminalExpressionImpl
+		 * @see ca.mcgill.emf.examples.hal.impl.HalPackageImpl#getTerminalExpression()
+		 * @generated
+		 */
+		EClass TERMINAL_EXPRESSION = eINSTANCE.getTerminalExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TERMINAL_EXPRESSION__STRING = eINSTANCE.getTerminalExpression_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Sensor</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TERMINAL_EXPRESSION__SENSOR = eINSTANCE.getTerminalExpression_Sensor();
 
 		/**
 		 * The meta object literal for the '{@link ca.mcgill.emf.examples.hal.impl.SensorTypeImpl <em>Sensor Type</em>}' class.

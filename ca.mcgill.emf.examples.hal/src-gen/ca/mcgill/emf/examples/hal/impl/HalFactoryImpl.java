@@ -78,10 +78,10 @@ public class HalFactoryImpl extends EFactoryImpl implements HalFactory {
 			return createControlCommand();
 		case HalPackage.SENSOR:
 			return createSensor();
-		case HalPackage.OPERAND:
-			return createOperand();
-		case HalPackage.OPERATION:
-			return createOperation();
+		case HalPackage.COMPOSITE:
+			return createComposite();
+		case HalPackage.TERMINAL_EXPRESSION:
+			return createTerminalExpression();
 		case HalPackage.SENSOR_TYPE:
 			return createSensorType();
 		case HalPackage.ACTUATOR_TYPE:
@@ -236,9 +236,9 @@ public class HalFactoryImpl extends EFactoryImpl implements HalFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operand createOperand() {
-		OperandImpl operand = new OperandImpl();
-		return operand;
+	public Composite createComposite() {
+		CompositeImpl composite = new CompositeImpl();
+		return composite;
 	}
 
 	/**
@@ -246,9 +246,9 @@ public class HalFactoryImpl extends EFactoryImpl implements HalFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation createOperation() {
-		OperationImpl operation = new OperationImpl();
-		return operation;
+	public TerminalExpression createTerminalExpression() {
+		TerminalExpressionImpl terminalExpression = new TerminalExpressionImpl();
+		return terminalExpression;
 	}
 
 	/**

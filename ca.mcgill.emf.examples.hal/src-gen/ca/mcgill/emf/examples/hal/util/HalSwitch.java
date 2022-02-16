@@ -181,20 +181,20 @@ public class HalSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case HalPackage.OPERAND: {
-			Operand operand = (Operand) theEObject;
-			T result = caseOperand(operand);
+		case HalPackage.COMPOSITE: {
+			Composite composite = (Composite) theEObject;
+			T result = caseComposite(composite);
 			if (result == null)
-				result = casePrecondition(operand);
+				result = casePrecondition(composite);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case HalPackage.OPERATION: {
-			Operation operation = (Operation) theEObject;
-			T result = caseOperation(operation);
+		case HalPackage.TERMINAL_EXPRESSION: {
+			TerminalExpression terminalExpression = (TerminalExpression) theEObject;
+			T result = caseTerminalExpression(terminalExpression);
 			if (result == null)
-				result = casePrecondition(operation);
+				result = casePrecondition(terminalExpression);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -448,32 +448,32 @@ public class HalSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Operand</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Composite</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Operand</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Composite</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOperand(Operand object) {
+	public T caseComposite(Composite object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Operation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Terminal Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Operation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Terminal Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOperation(Operation object) {
+	public T caseTerminalExpression(TerminalExpression object) {
 		return null;
 	}
 

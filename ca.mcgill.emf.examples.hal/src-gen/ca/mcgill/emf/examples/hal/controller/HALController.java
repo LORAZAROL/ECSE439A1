@@ -158,6 +158,11 @@ public class HALController {
 		// Create a device with given category
 		Device device = null;
 		DeviceType deviceT = null;
+		
+		if (existsDeviceName(address, deviceName, roomName)) {
+			return "Device with this name already exists. Device name must be unique";
+		}
+		
 		if(isSensor) {
 			device = HalFactory.eINSTANCE.createSensor();
 			deviceT = HalFactory.eINSTANCE.createSensorType();
@@ -389,6 +394,18 @@ public class HALController {
 	
 	private static boolean isStringValid( String s) {
 		return s == null || s.length() == 0;
+	}
+	
+	private static boolean existsDeviceName(String address, String deviceName, String roomName) {
+		boolean existsDeviceName = false;
+		ArrayList<Device> devicesList = getAllDevices();
+		for (Device device : devicesList) {
+			if (device.getName().equals(deviceName)) {
+				existsDeviceName = true;
+				break;
+			}
+		}
+		return existsDeviceName;
 	}
 	
 }

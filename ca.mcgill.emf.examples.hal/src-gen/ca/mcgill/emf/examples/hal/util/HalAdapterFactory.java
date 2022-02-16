@@ -142,13 +142,13 @@ public class HalAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseOperand(Operand object) {
-			return createOperandAdapter();
+		public Adapter caseComposite(Composite object) {
+			return createCompositeAdapter();
 		}
 
 		@Override
-		public Adapter caseOperation(Operation object) {
-			return createOperationAdapter();
+		public Adapter caseTerminalExpression(TerminalExpression object) {
+			return createTerminalExpressionAdapter();
 		}
 
 		@Override
@@ -391,30 +391,30 @@ public class HalAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ca.mcgill.emf.examples.hal.Operand <em>Operand</em>}'.
+	 * Creates a new adapter for an object of class '{@link ca.mcgill.emf.examples.hal.Composite <em>Composite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see ca.mcgill.emf.examples.hal.Operand
+	 * @see ca.mcgill.emf.examples.hal.Composite
 	 * @generated
 	 */
-	public Adapter createOperandAdapter() {
+	public Adapter createCompositeAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ca.mcgill.emf.examples.hal.Operation <em>Operation</em>}'.
+	 * Creates a new adapter for an object of class '{@link ca.mcgill.emf.examples.hal.TerminalExpression <em>Terminal Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see ca.mcgill.emf.examples.hal.Operation
+	 * @see ca.mcgill.emf.examples.hal.TerminalExpression
 	 * @generated
 	 */
-	public Adapter createOperationAdapter() {
+	public Adapter createTerminalExpressionAdapter() {
 		return null;
 	}
 

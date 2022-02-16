@@ -326,49 +326,49 @@ public class HalItemProviderAdapterFactory extends HalAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link ca.mcgill.emf.examples.hal.Operand} instances.
+	 * This keeps track of the one adapter used for all {@link ca.mcgill.emf.examples.hal.Composite} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OperandItemProvider operandItemProvider;
+	protected CompositeItemProvider compositeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link ca.mcgill.emf.examples.hal.Operand}.
+	 * This creates an adapter for a {@link ca.mcgill.emf.examples.hal.Composite}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOperandAdapter() {
-		if (operandItemProvider == null) {
-			operandItemProvider = new OperandItemProvider(this);
+	public Adapter createCompositeAdapter() {
+		if (compositeItemProvider == null) {
+			compositeItemProvider = new CompositeItemProvider(this);
 		}
 
-		return operandItemProvider;
+		return compositeItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link ca.mcgill.emf.examples.hal.Operation} instances.
+	 * This keeps track of the one adapter used for all {@link ca.mcgill.emf.examples.hal.TerminalExpression} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OperationItemProvider operationItemProvider;
+	protected TerminalExpressionItemProvider terminalExpressionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link ca.mcgill.emf.examples.hal.Operation}.
+	 * This creates an adapter for a {@link ca.mcgill.emf.examples.hal.TerminalExpression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOperationAdapter() {
-		if (operationItemProvider == null) {
-			operationItemProvider = new OperationItemProvider(this);
+	public Adapter createTerminalExpressionAdapter() {
+		if (terminalExpressionItemProvider == null) {
+			terminalExpressionItemProvider = new TerminalExpressionItemProvider(this);
 		}
 
-		return operationItemProvider;
+		return terminalExpressionItemProvider;
 	}
 
 	/**
@@ -538,10 +538,10 @@ public class HalItemProviderAdapterFactory extends HalAdapterFactory
 			controlCommandItemProvider.dispose();
 		if (sensorItemProvider != null)
 			sensorItemProvider.dispose();
-		if (operandItemProvider != null)
-			operandItemProvider.dispose();
-		if (operationItemProvider != null)
-			operationItemProvider.dispose();
+		if (compositeItemProvider != null)
+			compositeItemProvider.dispose();
+		if (terminalExpressionItemProvider != null)
+			terminalExpressionItemProvider.dispose();
 		if (sensorTypeItemProvider != null)
 			sensorTypeItemProvider.dispose();
 		if (actuatorTypeItemProvider != null)
