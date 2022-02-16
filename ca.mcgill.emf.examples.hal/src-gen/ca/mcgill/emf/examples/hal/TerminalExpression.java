@@ -2,8 +2,6 @@
  */
 package ca.mcgill.emf.examples.hal;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Terminal Expression</b></em>'.
@@ -45,15 +43,25 @@ public interface TerminalExpression extends Precondition {
 	void setString(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Sensor</b></em>' reference list.
-	 * The list contents are of type {@link ca.mcgill.emf.examples.hal.Sensor}.
+	 * Returns the value of the '<em><b>Sensor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sensor</em>' reference list.
+	 * @return the value of the '<em>Sensor</em>' reference.
+	 * @see #setSensor(Sensor)
 	 * @see ca.mcgill.emf.examples.hal.HalPackage#getTerminalExpression_Sensor()
-	 * @model required="true" upper="2"
+	 * @model required="true"
 	 * @generated
 	 */
-	EList<Sensor> getSensor();
+	Sensor getSensor();
+
+	/**
+	 * Sets the value of the '{@link ca.mcgill.emf.examples.hal.TerminalExpression#getSensor <em>Sensor</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sensor</em>' reference.
+	 * @see #getSensor()
+	 * @generated
+	 */
+	void setSensor(Sensor value);
 
 } // TerminalExpression

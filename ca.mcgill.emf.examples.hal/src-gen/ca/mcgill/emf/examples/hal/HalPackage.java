@@ -876,7 +876,7 @@ public interface HalPackage extends EPackage {
 	int TERMINAL_EXPRESSION__STRING = PRECONDITION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Sensor</b></em>' reference list.
+	 * The feature id for the '<em><b>Sensor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1534,10 +1534,10 @@ public interface HalPackage extends EPackage {
 	EAttribute getTerminalExpression_String();
 
 	/**
-	 * Returns the meta object for the reference list '{@link ca.mcgill.emf.examples.hal.TerminalExpression#getSensor <em>Sensor</em>}'.
+	 * Returns the meta object for the reference '{@link ca.mcgill.emf.examples.hal.TerminalExpression#getSensor <em>Sensor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Sensor</em>'.
+	 * @return the meta object for the reference '<em>Sensor</em>'.
 	 * @see ca.mcgill.emf.examples.hal.TerminalExpression#getSensor()
 	 * @see #getTerminalExpression()
 	 * @generated
@@ -2038,7 +2038,7 @@ public interface HalPackage extends EPackage {
 		EAttribute TERMINAL_EXPRESSION__STRING = eINSTANCE.getTerminalExpression_String();
 
 		/**
-		 * The meta object literal for the '<em><b>Sensor</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Sensor</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

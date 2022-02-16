@@ -5,18 +5,11 @@ package ca.mcgill.emf.examples.hal.impl;
 import ca.mcgill.emf.examples.hal.HalPackage;
 import ca.mcgill.emf.examples.hal.Sensor;
 import ca.mcgill.emf.examples.hal.TerminalExpression;
-
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,14 +47,14 @@ public class TerminalExpressionImpl extends PreconditionImpl implements Terminal
 	protected String string = STRING_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSensor() <em>Sensor</em>}' reference list.
+	 * The cached value of the '{@link #getSensor() <em>Sensor</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSensor()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Sensor> sensor;
+	protected Sensor sensor;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,11 +102,39 @@ public class TerminalExpressionImpl extends PreconditionImpl implements Terminal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Sensor> getSensor() {
-		if (sensor == null) {
-			sensor = new EObjectResolvingEList<Sensor>(Sensor.class, this, HalPackage.TERMINAL_EXPRESSION__SENSOR);
+	public Sensor getSensor() {
+		if (sensor != null && sensor.eIsProxy()) {
+			InternalEObject oldSensor = (InternalEObject) sensor;
+			sensor = (Sensor) eResolveProxy(oldSensor);
+			if (sensor != oldSensor) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HalPackage.TERMINAL_EXPRESSION__SENSOR,
+							oldSensor, sensor));
+			}
 		}
 		return sensor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Sensor basicGetSensor() {
+		return sensor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSensor(Sensor newSensor) {
+		Sensor oldSensor = sensor;
+		sensor = newSensor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HalPackage.TERMINAL_EXPRESSION__SENSOR, oldSensor,
+					sensor));
 	}
 
 	/**
@@ -127,7 +148,9 @@ public class TerminalExpressionImpl extends PreconditionImpl implements Terminal
 		case HalPackage.TERMINAL_EXPRESSION__STRING:
 			return getString();
 		case HalPackage.TERMINAL_EXPRESSION__SENSOR:
-			return getSensor();
+			if (resolve)
+				return getSensor();
+			return basicGetSensor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -145,8 +168,7 @@ public class TerminalExpressionImpl extends PreconditionImpl implements Terminal
 			setString((String) newValue);
 			return;
 		case HalPackage.TERMINAL_EXPRESSION__SENSOR:
-			getSensor().clear();
-			getSensor().addAll((Collection<? extends Sensor>) newValue);
+			setSensor((Sensor) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -164,7 +186,7 @@ public class TerminalExpressionImpl extends PreconditionImpl implements Terminal
 			setString(STRING_EDEFAULT);
 			return;
 		case HalPackage.TERMINAL_EXPRESSION__SENSOR:
-			getSensor().clear();
+			setSensor((Sensor) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -181,7 +203,7 @@ public class TerminalExpressionImpl extends PreconditionImpl implements Terminal
 		case HalPackage.TERMINAL_EXPRESSION__STRING:
 			return STRING_EDEFAULT == null ? string != null : !STRING_EDEFAULT.equals(string);
 		case HalPackage.TERMINAL_EXPRESSION__SENSOR:
-			return sensor != null && !sensor.isEmpty();
+			return sensor != null;
 		}
 		return super.eIsSet(featureID);
 	}
